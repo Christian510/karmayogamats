@@ -3,17 +3,23 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 //  *** Routes ***
-import Home from './components/Home';
-import Footer from './components/Footer';
-import Login from './components/Login';
-import MangAcct from './components/MangAcct';
+import Home from '../components/Home';
+import Login from '../components/Login';
+import Registration from '../components/Registration';
+import Checkout from '../components/Checkout';
+import BuildSeq from    '../components/BuildSeq';
+import SavedSeq from    '../components/SavedSeq';
+import MangAcct from '../components/MangAcct';
 
-// Need to organize routes...
+
 export default ( 
     <Switch>
         <Route exact path="/" component={ Home } />
-        <Route exact path="/" component={ Footer } />
-        <Route exact path="/" component={ MangAcct } />
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/register" component={ Registration } />
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/checkout" component={ Checkout } />
+        <Route exact path="/build" component={ BuildSeq } />
+        <Route exact path="/view-saved" component={ SavedSeq } />
+        <Route exact path="/manage" component={ MangAcct } />
     </Switch>
  );
