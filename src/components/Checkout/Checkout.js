@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-// import MyAcctNav from '../components/MyAcctNav.js'
+
 
 class Registration extends Component {
 
     constructor() {
         super();
         this.state = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: ''
+            
+            address: '',
+            city: '',
+            state: '',
+            zip: '',
+            country: '',
+            pay_method: '',
+            secret_num: '',
 
         }
 
