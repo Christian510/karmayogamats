@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class Registration extends Component {
+class Checkout extends Component {
 
     constructor() {
         super();
@@ -32,4 +32,4 @@ class Registration extends Component {
     }
 }
 
-export default Registration;
+export default Checkout;

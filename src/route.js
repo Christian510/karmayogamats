@@ -3,13 +3,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 //  *** Routes ***
-import Home from '../components/Home';
-import Login from '../components/Login';
-import Registration from '../components/Registration';
-import Checkout from '../components/Checkout';
-import BuildSeq from    '../components/BuildSeq';
-import SavedSeq from    '../components/SavedSeq';
-import MangAcct from '../components/MangAcct';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
+import Checkout from './components/Checkout/Checkout';
+import BuildSeq from './components/BuildSeq/BuildSeq';
+import SavedSeq from './components/SaveSeq/SaveSeq';
+import MangAcct from './components/MangAcct/MangAcct';
 
 
 export default ( 
