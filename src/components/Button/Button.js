@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import '../components/Button.sass';
+import React from 'react';
+import './button.sass';
 
 
-class Button extends Component {
+function Button(props) {
     
-    render() {
-        return (
-            <button className={"color"}>{ "content" }</button>
-        )
-    }
+    const { kind, name } = props
+    const className = kind === "button-solid";
+    return (
+        <button className={ className } > { name } </button>
+    )
 }
 
 export default Button;

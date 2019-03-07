@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.sass';
+import './components/App/App.sass';
 import route from './route';
 import { Link } from 'react-router-dom';
 
