@@ -4,10 +4,9 @@ import './button.sass';
 
 function Button(props) {
     
-    const { kind, name } = props
-    const className = kind === "button-solid";
+    const { kind, name,  ...other } = props
     return (
-        <button className={ className } > { name } </button>
+        <button className={ kind } {  ...other } > { name } </button>
     )
 }
 
