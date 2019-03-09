@@ -1,13 +1,14 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 
-function MyAcctNav() {
-
+class MyAcctNav extends Component() {
+    render(){
     return (
         <div>
             My Account Navigation Header
         </div>
     )
+}
 }
 
 export default MyAcctNav;

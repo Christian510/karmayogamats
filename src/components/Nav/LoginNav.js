@@ -1,33 +1,56 @@
 
 // Routes the user to Login.js
 
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Button from '../Button/button';
-import './LoginNav.sass';
-import '../Button/button.sass'
 import Logo from '../../assets/KYM-logo.png';
+import './LoginNav.sass';
+import '../Button/button.sass';
 
-function LoginNav() {
 
-    return (
-        <div className="container">
-            <div className="header">
-                <div className="phone">
-                    <h3>(208)222-2222</h3>
-                </div>
-                <div className="button">
-                    <Button kind={"button-solid"} name={"Submit"} onClick={() => console.log("clicked!")}></Button>
-                </div>
-            </div>
-            <div className="center">
-                    <img className="logo" src={ Logo } width="200" alt="KYM" ></img>
-            </div>
 
+
+class LoginNav extends Component {
+    constructor(){
+        super();
+        this.state = {
+            toLogin: false
+        }
+        this.basState = this.state
+    }
+    
+
+    handleLogin() {
+         this.setState({
+            toLogin: true
+        })
+    }
+
+    render() {
+        if(this.state.toLogin === true) {
+            
+            return <Redirect to='/login' />
+        }
+        
+        return (
             <div>
-
+                <div className="header">
+                    <div className="phone">
+                        <h3>(208)222-2222</h3>
+                    </div>
+                    <div className="button">
+                        <Button kind={"button-solid"} name={"Submit"} onClick={ (e) => {this.handleLogin(e.target.value) } }></Button>
+                    </div>
+                </div>
+                <div className="center">
+                    <img className="logo" src={Logo} width="200" alt="KYM" ></img>
+                </div>
+                <div>
+                </div>
             </div>
-        </div>
-    )
+        );
+    }
 }
 
 export default LoginNav;

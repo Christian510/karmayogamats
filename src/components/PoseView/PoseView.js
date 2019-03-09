@@ -1,15 +1,17 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 
 // This component displays each yoga pose in the Build Sequence Page.
 
-function PoseView() {
+class PoseView extends Component() {
 
-    return(
-        <div>
-            Pose View
+    render() {
+        return (
+            <div>
+                Pose View
         </div>
-    )
+        )
+    }
 }
 
 export default PoseView;

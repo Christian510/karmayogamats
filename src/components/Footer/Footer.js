@@ -1,6 +1,6 @@
 
 import React from 'react';
-import  './footer.sass'
+import  './footer.sass';
 
 function Footer() {
 
