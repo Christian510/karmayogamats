@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Button from '../Button/button';
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/KYM-logo.png';
 import './LoginNav.sass';
 import '../Button/button.sass';
@@ -39,8 +39,8 @@ class LoginNav extends Component {
                     <div className="phone">
                         <h3>(208)222-2222</h3>
                     </div>
-                    <div className="button">
-                        <Button kind={"button-solid"} name={"Submit"} onClick={ (e) => {this.handleLogin(e.target.value) } }></Button>
+                    <div>
+                        <p> <Link to="/login" >Login</Link> </p>
                     </div>
                 </div>
                 <div className="center">

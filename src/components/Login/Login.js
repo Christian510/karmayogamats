@@ -3,6 +3,7 @@
 // axios.get username and login
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import LoginNav from '../Nav/LoginNav';
 import './Login.sass'
 import '../../Global/global.sass'
@@ -36,7 +37,7 @@ class Login extends Component {
                             placeholder={"Password"}
                         />
                     </div>
-                    <p>Forgot Password?</p>
+                    <p><Link to="/ResetPass" >Reset Password</Link></p>
                     <div>
                         <Input
                             id={"Email Address"}

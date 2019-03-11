@@ -15,6 +15,7 @@ class App extends Component {
         <Link to="/build" ></Link>
         <Link to="/view-saved" ></Link>
         <Link to="/manage" ></Link>  
+        <Link to="/ResetPass"></Link>
           { route }
       </div>
     );
