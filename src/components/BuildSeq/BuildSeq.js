@@ -30,21 +30,24 @@ class BuildSeq extends Component {
                 <div>
                     <LoginNav />
                 </div>
-                <section>
-                    <div className="navigation" >
+                <section className="navigation" >
+                    <div className="tabs flex-center-row" >
                         <div>Saved Sequence</div>
                         <div>Build A Sequence</div>
                         <div>Manage Account</div>
                     </div>
+                    <Button kind={"button-outlined"} name={"Back To All Classes"}   />
+                </section>
                     <div>
                         Displays each added pose
+                        {/* <Pose /> display left to right */}
                     </div>
                     <div>
                         <p># of poses added</p>
                         <Input />
                         <Button kind={ "button-solid" } name={ "Save Sequence" } />
                     </div>
-                </section>
+                
                 <section>
 
                 </section>
