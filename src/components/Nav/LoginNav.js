@@ -34,7 +34,7 @@ class LoginNav extends Component {
         }
         
         return (
-            <div>
+            <div id="header-border">
                 <div className="header">
                     <div className="phone">
                         <h3>(208)222-2222</h3>
@@ -43,10 +43,8 @@ class LoginNav extends Component {
                         <p> <Link to="/login" >Login</Link> </p>
                     </div>
                 </div>
-                <div className="center">
+                <div className="pad-bottom">
                     <img className="logo" src={Logo} width="200" alt="KYM" ></img>
-                </div>
-                <div>
                 </div>
             </div>
         );

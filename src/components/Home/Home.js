@@ -26,17 +26,17 @@ class Home extends Component {
                         <h1>Loving it is easy</h1>
                         <div className="flex-center-row">
                             <div className="headings">
-                                <span class="lg-dot"></span>
+                                <span className="lg-dot"></span>
                                 <h2>Heading 1</h2>
                                 <p>lorem ipsom</p>
                             </div>
                             <div className="headings">
-                                <span class="lg-dot"></span>
+                                <span className="lg-dot"></span>
                                 <h2>Heading 2</h2>
                                 <p>lorem ipsom</p>
                             </div>
                             <div className="headings">
-                                <span class="lg-dot"></span>
+                                <span className="lg-dot"></span>
                                 <h2>Heading 3</h2>
                                 <p>lorem ipsom</p>
                             </div>

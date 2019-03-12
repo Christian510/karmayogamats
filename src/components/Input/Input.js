@@ -6,10 +6,9 @@ import './Input.sass';
 
 function Input(props) {
     return(
-        <div className="align-content" >
+        <div className="align-content-bl" >
             <label htmlFor={props.name} className="" >{ props.name }</label>
             <input 
-            className=""
             id={props.name}
             name={props.name}
             type={props.inputType}

@@ -12,7 +12,8 @@ $LightGray: #d4d7d7
    color: white
    font-size: 12px
    height: 30px
-   width: 120px
+   max-width: 160px
+   min-width: 120px
    border-radius: 3px
    border: none
    box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3)
@@ -24,22 +25,32 @@ $LightGray: #d4d7d7
 .button-outlined
     font-size: 12px
     height: 30px
-    width: 120px
+    max-width: 160px
+    min-width: 120px
     border-radius: 3px
     border: 2px solid $DarkTeal
     box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3)
     background: white
     cursor: pointer
 
-// Wide Button
-.button-sol-wd
-   color: white
+
+.button-sol-lt
+   color: $DarkGray
    font-size: 12px
    height: 30px
    width: 160px
    border-radius: 3px
    border: none
    box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3)
-   background: $DarkTeal
+   background: $LightTeal
    cursor: pointer
 
+// .button-outlined-wd
+//    font-size: 12px
+//    height: 30px
+//    max-width: 160px
+//    border-radius: 3px
+//    border: 2px solid $DarkTeal
+//    box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3)
+//    background: white
+//    cursor: pointer

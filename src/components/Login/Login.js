@@ -31,7 +31,7 @@ class Login extends Component {
                     </div>
                     <div>
                         <Input
-                            id={"Email Address"}
+                            id={"Password"}
                             name={"Password"}
                             inputType={"text"}
                             placeholder={"Password"}
