@@ -7,7 +7,7 @@ import LoginNav from '../Nav/LoginNav';
 import Input from '../Input/Input';
 import Button from '../Button/button';
 import Pose from './Pose';
-// import InfiniteCarousel from '../../Carousel/react-leaf-carousel';
+import InfiniteCarousel from 'react-leaf-carousel';
 // import MyAcctNav from '../components/MyAcctNav.js'
 
 // Styles
@@ -20,8 +20,12 @@ class BuildSeq extends Component {
     constructor() {
         super();
         this.state = {
+            poses: [],
             sequences: [],
+
+
         }
+
 
     }
 
@@ -30,7 +34,7 @@ class BuildSeq extends Component {
             .then(res => {
                 console.log("===== Success! =====");
                 this.setState({
-                    sequences: res.data
+                    poses: res.data
                 })
             })
             .catch(err => {
@@ -39,13 +43,23 @@ class BuildSeq extends Component {
             })
     }
 
+    addPose(pose) {
+        console.log(`grabed the ${pose.english_name}`);
+        const selectedPose = this.state.sequences.filter(item =>
+            item.id === pose.id
+        );
+        this.state.sequences.push(selectedPose);
+        console.log(this.state.sequences.length);
+    }
+
     render() {
-        const seq = this.state.sequences.map((elm, i) => {
-            // console.log(elm);
+        const seq = this.state.poses.map((elm, i) => {
+            console.log(elm);
             return (
-                <Pose key={i} img_url={elm.img_url} english_name={elm.english_name} />
-            )
-        })
+                <Pose key={i} img_url={elm.img_url}
+                    english_name={elm.english_name}
+                    onClick={() => this.addPose(elm)} />
+            )})
 
         return (
             <div>
@@ -88,134 +102,45 @@ class BuildSeq extends Component {
                             showSides={true}
                             sidesOpacity={.5}
                             sideSize={.1}
-                            slidesToScroll={4}
+                            slidesToScroll={1}
                             slidesToShow={4}
                             scrollOnDevice={true}
+                            lazyLoad={true}
                         >
-                            <div>
+                            <div className="">
                                 <img
                                     className="size"
                                     alt='pose'
-                                    src="https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1"
-                                   
+                                    src="https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
                                 />
-                                <p>Boat Pose</p>
+                                <p>Pose</p>
                             </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=904098&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ef4d9c&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=00f3d1&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=00ffff&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ee1f34&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=91b4c0&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ff6347&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ebbfbf&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=def1f9&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=cdf2c6&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=9fa616&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=2c4caa&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=44e3e1&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ff6666&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=94e1e3&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=29083c&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ffff99&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=616161&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
-                            <div>
-                                <img
-                                    alt=''
-                                    src='https://placeholdit.imgix.net/~text?txtsize=20&bg=ed7ebe&txtclr=ffffff&txt=215%C3%97215&w=215&h=215'
-                                />
-                            </div>
+                            {this.state.sequences.map(({ img_url, english_name }) => {
+                                return (
+                                <div className="asdf img_size" >
+                                    <img
+                                        className="size"
+                                        alt='pose'
+                                        src={img_url}
+                                    />
+                                    <p>{english_name}</p>
+                                </div>
+                                );
+                            })}
+
                         </InfiniteCarousel> */}
+                        {this.state.sequences.map(({ img_url, english_name }) => 
+                                // return (
+                               ( <div className="asdf img_size" >
+                                    <img
+                                        className="size"
+                                        alt={english_name}
+                                        src={img_url}
+                                    />
+                                    <p>{english_name}</p>
+                                </div>)
+                                // );
+                            )}
                     </div>
                     <div className="inputs">
                         <div>
@@ -236,17 +161,8 @@ class BuildSeq extends Component {
                 </section>
                 <section id="wrapper">
                     <div className="display-poses" >
-                        <Pose />1
-                        {/* <Pose />2
-                        <Pose />3
-                        <Pose />4
-                        <Pose />5
-                        <Pose />6
-                        <Pose />7
-                        <Pose />8
-                        <Pose />9 */}
                         <div>
-                            { seq }
+                            {seq}
                         </div>
                     </div>
                 </section>
