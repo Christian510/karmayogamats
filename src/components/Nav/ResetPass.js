@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginNav from '../Nav/LoginNav';
-import '../../Global/global.sass'
+import '../../Global/global.sass';
 import Footer from '../Footer/Footer';
 import Input from '../Input/Input';
 import Button from '../Button/button';
@@ -19,7 +19,7 @@ class ResetPass extends Component {
                         <Input
                             id={"New Password"}
                             name={"New Password"}
-                            inputType={"password"}
+                            type={"password"}
                             placeholder={"Password"}
                         />
                     </div>
@@ -27,7 +27,7 @@ class ResetPass extends Component {
                         <Input
                             id={"Confirm Password"}
                             name={"Password"}
-                            inputType={"password"}
+                            type={"password"}
                             placeholder={"Password"}
                         />
                     </div>

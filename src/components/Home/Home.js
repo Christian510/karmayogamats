@@ -70,7 +70,7 @@ class Home extends Component {
                             </div>
                         </div>
                         <div id="content-bt">
-                            <Button kind={"button-sol-wd"} name={"Build Your First Class"} />
+                            <Button kind={"button-solid"} name={"Build Your First Class"} />
                         </div>
                     </section>
                     <section className="carousel">

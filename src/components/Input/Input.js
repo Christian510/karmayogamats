@@ -6,12 +6,12 @@ import './Input.sass';
 
 function Input(props) {
     return(
-        <div className="align-content-bl" >
-            <label htmlFor={props.name} className="" >{ props.name }</label>
+        <div className="align-content-bl" id="pad-comp" >
+            <label htmlFor={props.name} >{ props.name }</label>
             <input 
             id={props.name}
             name={props.name}
-            type={props.inputType}
+            type={props.type}
             value={props.value}
             onChange={props.handleChange}
             placeholder={props.placeholder}

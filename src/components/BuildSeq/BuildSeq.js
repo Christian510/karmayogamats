@@ -1,13 +1,15 @@
 
 import React, { Component } from 'react';
 import Axios from 'axios';
+import range from 'lodash/range';
 
 // Components
 import LoginNav from '../Nav/LoginNav';
 import Input from '../Input/Input';
 import Button from '../Button/button';
 import Pose from './Pose';
-import InfiniteCarousel from 'react-leaf-carousel';
+import ItemsCarousel from 'react-items-carousel';
+// import CarouselImage from '../Carousel/CarouselImage/CarouselImage';
 // import MyAcctNav from '../components/MyAcctNav.js'
 
 // Styles
@@ -15,14 +17,16 @@ import './BuildSeq.sass';
 import '../../Global/global.sass';
 
 
+
 class BuildSeq extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             poses: [],
             sequences: [],
-
+            children: [],
+            activeItemIndex: 0
 
         }
 
@@ -30,6 +34,8 @@ class BuildSeq extends Component {
     }
 
     componentDidMount() {
+        // Gets all the poses from API  
+        console.log("did mount")
         Axios.get('/api/yoga_api/')
             .then(res => {
                 console.log("===== Success! =====");
@@ -43,23 +49,69 @@ class BuildSeq extends Component {
             })
     }
 
+    createChildren = n => n.map(pose => {
+        console.log("", this.state.sequences)
+        pose= pose[0];
+        return (
+            <div>
+            <div 
+            key={pose.id}
+            style={{ 
+                height: 200, 
+                border: "solid",  
+                backgroundImage: `url("${pose.img_url}")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center"
+                }}>
+            </div>
+            <p>{ pose.english_name }</p>
+            <Button kind={"button-solid"} name={"Delete"} />
+            </div>
+        )
+    });
+
+    changeActiveItem = (activeItemIndex) => { this.setState({ activeItemIndex }); }
+
+
     addPose(pose) {
+        let { sequences } = this.state;
+        let newSequences = sequences;
+
         console.log(`grabed the ${pose.english_name}`);
-        const selectedPose = this.state.sequences.filter(item =>
+
+        const selectedPose = this.state.poses.filter(item =>
             item.id === pose.id
         );
-        this.state.sequences.push(selectedPose);
-        console.log(this.state.sequences.length);
+
+
+        newSequences.push(selectedPose);
+        console.log(newSequences.length);
+        
+        this.setState({
+            sequences: newSequences,
+            children: this.createChildren(newSequences),
+
+        }, () => { console.log("line 114",this.state.sequences) });
+
     }
 
+    // deletePose() {}
+
     render() {
+
+        const {
+            activeItemIndex,
+            children,
+        } = this.state;
+
+        // Displays all the poses in the DOM
         const seq = this.state.poses.map((elm, i) => {
-            console.log(elm);
             return (
                 <Pose key={i} img_url={elm.img_url}
                     english_name={elm.english_name}
                     onClick={() => this.addPose(elm)} />
-            )})
+            )
+        });
 
         return (
             <div>
@@ -81,70 +133,36 @@ class BuildSeq extends Component {
                 </section>
                 <section className="flex-center-row">
                     <div className="sequence-bulder">
-                        {/* <InfiniteCarousel
-                            breakpoints={[
-                                {
-                                    breakpoint: 500,
-                                    settings: {
-                                        slidesToShow: 2,
-                                        slidesToScroll: 2,
-                                    },
-                                },
-                                {
-                                    breakpoint: 768,
-                                    settings: {
-                                        slidesToShow: 3,
-                                        slidesToScroll: 3,
-                                    },
-                                },
-                            ]}
-                            dots={true}
-                            showSides={true}
-                            sidesOpacity={.5}
-                            sideSize={.1}
-                            slidesToScroll={1}
-                            slidesToShow={4}
-                            scrollOnDevice={true}
-                            lazyLoad={true}
-                        >
-                            <div className="">
-                                <img
-                                    className="size"
-                                    alt='pose'
-                                    src="https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
-                                />
-                                <p>Pose</p>
-                            </div>
-                            {this.state.sequences.map(({ img_url, english_name }) => {
-                                return (
-                                <div className="asdf img_size" >
-                                    <img
-                                        className="size"
-                                        alt='pose'
-                                        src={img_url}
-                                    />
-                                    <p>{english_name}</p>
-                                </div>
-                                );
-                            })}
+                        <ItemsCarousel
+                            // Placeholder configurations
+                            enablePlaceholder={false}
+                            numberOfPlaceholderItems={5}
+                            minimumPlaceholderTime={1000}
+                            // placeholderItem={<div style={{ height: 200, background: '#900' }}>Placeholder</div>}
 
-                        </InfiniteCarousel> */}
-                        {this.state.sequences.map(({ img_url, english_name }) => 
-                                // return (
-                               ( <div className="asdf img_size" >
-                                    <img
-                                        className="size"
-                                        alt={english_name}
-                                        src={img_url}
-                                    />
-                                    <p>{english_name}</p>
-                                </div>)
-                                // );
-                            )}
+                            // Carousel configurations
+                            numberOfCards={5}
+                            gutter={12}
+                            showSlither={true}
+                            firstAndLastGutter={true}
+                            freeScrolling={true}
+
+                            // Active item configurations
+                            requestToChangeActive={this.changeActiveItem}
+                            activeItemIndex={activeItemIndex}
+                            activePosition={'center'}
+
+                            chevronWidth={24}
+                            rightChevron={'>'}
+                            leftChevron={'<'}
+                            outsideChevron={false}
+                        >
+                            {children}
+                        </ItemsCarousel>
                     </div>
                     <div className="inputs">
                         <div>
-                            <p># of poses added</p>
+                            <p>{children.length} of poses added</p>
                         </div>
 
                         <Input
@@ -161,9 +179,7 @@ class BuildSeq extends Component {
                 </section>
                 <section id="wrapper">
                     <div className="display-poses" >
-                        <div>
-                            {seq}
-                        </div>
+                        {seq}
                     </div>
                 </section>
             </div>

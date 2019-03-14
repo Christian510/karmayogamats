@@ -36,7 +36,7 @@ class Registration extends Component {
                         <Input
                             id={"First Name"}
                             name={"First Name"}
-                            inputType={"text"}
+                            type={"text"}
                             placeholder={"First Name"}
                         />
                     </div>
@@ -44,38 +44,36 @@ class Registration extends Component {
                         <Input
                             id={"Last Name"}
                             name={"Last Name"}
-                            inputType={"text"}
+                            type={"text"}
                             placeholder={"Last Name"}
                         />
                     </div>
                     <div>
                         <Input
                             id={"Email Address"}
-                            name={"email"}
-                            inputType={"email"}
+                            name={"Email"}
+                            type={"email"}
                             placeholder={"Email"}
                         />
                     </div>
                     <div>
                         <Input
                             id={"password"}
-                            name={"password"}
-                            inputType={"password"}
+                            name={"Password"}
+                            type={"password"}
                             placeholder={"Password"}
                         />
                     </div>
                     <div>
                         <Input
                             id={"Confirm Password"}
-                            name={"password"}
-                            inputType={"password"}
-                            placeholder={"Confirm Password"}
+                            name={"Confirm password"}
+                            type={"password"}
+                            placeholder={"Password"}
                         />
                     </div>
-                    <div>
-                        <Button kind={"button-solid"} name={"Create Account"}  />
-                    </div>
-                    <div>
+                    <div id="pad-bt" >
+                        <Button kind={"button-solid"} name={"Create Account"} />
                     </div>
                 </div>
                 <div>

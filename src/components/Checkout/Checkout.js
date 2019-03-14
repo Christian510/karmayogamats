@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+// Components
+import Button from '../Button/button';
+import Input from '../Input/Input.sass';
+
+// Styles
+import '../../Global/global.sass';
+import './checkout.sass';
+
 
 class Checkout extends Component {
 
