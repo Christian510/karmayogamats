@@ -11,6 +11,7 @@ import BuildSeq from './components/BuildSeq/BuildSeq';
 import SavedSeq from './components/SaveSeq/SaveSeq';
 import MangAcct from './components/MangAcct/MangAcct';
 import ResetPass from './components/Nav/ResetPass';
+import Tabs from './components/Nav/Tabs/Tabs';
 
 
 export default ( 
@@ -23,6 +24,6 @@ export default (
         <Route exact path="/view-saved" component={ SavedSeq } />
         <Route exact path="/manage" component={ MangAcct } />
         <Route exact path="/ResetPass" component={ ResetPass } />
-        <Route exact path="/Register" component={ Registration } />
+        <Route path="/Tabs" component={Tabs} />
     </Switch>
  );

@@ -4,7 +4,7 @@ import '../../Global/global.sass';
 import './registration.sass';
 import Footer from '../Footer/Footer';
 import Input from '../Input/Input';
-import Button from '../Button/button';
+import '../Button/button';
 
 class Registration extends Component {
 
@@ -20,9 +20,16 @@ class Registration extends Component {
 
     }
 
+    // handleChange(){
+    //     this.setState({
+    //         first_name: 
+    //     })
+    // }
     // PUSH to database
 
-    // onSumbit() routes user to checkout page.
+    // handleSumbit() 
+    
+    //routes user to checkout page.
 
     render() {
         return (
@@ -38,6 +45,8 @@ class Registration extends Component {
                             name={"First Name"}
                             type={"text"}
                             placeholder={"First Name"}
+                            // onChange={}
+
                         />
                     </div>
                     <div>
@@ -73,7 +82,7 @@ class Registration extends Component {
                         />
                     </div>
                     <div id="pad-bt" >
-                        <Button kind={"button-solid"} name={"Create Account"} />
+                        <button className={"button-solid"} onSubmit={this.handleSubmit}>Create Account</button>
                     </div>
                 </div>
                 <div>

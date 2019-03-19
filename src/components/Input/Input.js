@@ -9,6 +9,7 @@ function Input(props) {
         <div className="align-content-bl" id="pad-comp" >
             <label htmlFor={props.name} >{ props.name }</label>
             <input 
+            className={props.className}
             id={props.name}
             name={props.name}
             type={props.type}

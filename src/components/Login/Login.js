@@ -12,6 +12,16 @@ import Input from '../Input/Input';
 import Button from '../Button/button';
 
 class Login extends Component {
+    constructor() {
+        super();
+        this.state = {
+
+        }
+    }
+
+    componentWillMount(){}
+
+    componentDidMount(){}
 
     render() {
         return (
@@ -19,43 +29,51 @@ class Login extends Component {
                 <div>
                     <LoginNav />
                 </div>
-                <div className="container flex-center-start">
-                    <h1>Login to your account</h1>
-                    <div>
-                        <Input
-                            id={"Email Address"}
-                            name={"Email"}
-                            inputType={"text"}
-                            placeholder={"Email Address"}
-                        />
-                    </div>
-                    <div>
-                        <Input
-                            id={"Password"}
-                            name={"Password"}
-                            inputType={"text"}
-                            placeholder={"Password"}
-                        />
-                    </div>
-                    <p><Link to="/ResetPass" >Reset Password</Link></p>
-                    <div>
-                        <Input
-                            id={"Email Address"}
-                            name={"keep me loged in for 30 days"}
-                            inputType={"checkbox"}
-                        />
-                    </div>
-                    <div>
-                        <Button kind={"button-solid"} name={"Log in"} />
-                    </div>
-                    <div>
-                        <p>Need an account?</p>  {/* use ::before to create line */}
+                <div className="container flex-center-col">
+                    <div className="wrapper align-content-bl">
+                        <h1>Login to your account</h1>
                         <div>
-                            <Button kind={"button-outlined"} name={"Sign Up"} />
+                            <Input
+                                className={"input-text"}
+                                id={"Email Address"}
+                                name={"Email"}
+                                type={"text"}
+                                placeholder={"Email Address"}
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                className={"input-text"}
+                                id={"Password"}
+                                name={"Password"}
+                                type={"text"}
+                                placeholder={"Password"}
+                            />
+                        </div>
+                        <div>
+                            <Link to="/ResetPass" >Reset Password</Link>
+                        </div>
+                        <div id="flip">
+                            <Input
+                                className={"input-bt"}
+                                id={"checkbox"}
+                                name={"keep me loged in for 30 days"}
+                                type={"checkbox"}
+                            />
+                        </div>
+                        <div>
+                            <Button kind={"button-solid"} name={"Log in"} />
+                        </div>
+                        <div id="border-top">
+                            <p>Need an account?</p>
+                            <div>
+                                <button className={"button-outlined"} >
+                                    <Link to={'/register'}>Sign up</Link>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div>
                     <Footer />
                 </div>

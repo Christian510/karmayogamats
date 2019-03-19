@@ -1,9 +1,11 @@
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import LoginNav from '../Nav/LoginNav';
 import '../Home/Home.sass'
-import Button from '../Button/button';
+import '../Button/button.sass';
 import Footer from '../Footer/Footer';
+
 
 class Home extends Component {
 
@@ -18,8 +20,12 @@ class Home extends Component {
                         <h1>Build Your Yoga Class</h1>
                         <p>Put your class together today</p>
                         <div>
-                            <Button kind={"button-outlined"} name={"Learn More"} onClick={() => console.log('clicked!')} />
-                            <Button kind={"button-solid"} name={"Start Building"} onClick={() => console.log('clicked!')} />
+                            <button className="button-outlined">
+                                <Link to={'/about'}  >Learn More</Link></button>
+                                <button className={"button-solid"}>
+                                    <Link to={'/register'} >Start Building</Link>
+                                </button>
+                            
                         </div>
                     </section>
                     <section className="get-started flex-center-col">
@@ -41,7 +47,7 @@ class Home extends Component {
                                 <p>lorem ipsom</p>
                             </div>
                         </div>
-                        <Button kind={"button-solid"} name={"Start Building"} onClick={() => console.log('clicked!')} />
+                        <Link to={'/register'} className={"button-solid"} >Start Building</Link>
                     </section>
                     <section className="content flex-center-col">
                         <h1>How It Works</h1>
@@ -70,7 +76,10 @@ class Home extends Component {
                             </div>
                         </div>
                         <div id="content-bt">
-                            <Button kind={"button-solid"} name={"Build Your First Class"} />
+                            <button className={"button-solid"} >
+                            <Link to={'/register'}>Build Your First Class</Link>
+                            </button>
+
                         </div>
                     </section>
                     <section className="carousel">

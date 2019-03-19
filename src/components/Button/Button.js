@@ -4,9 +4,9 @@ import './button.sass';
 
 function Button(props) {
     
-    const { kind, name,  ...other } = props
+    const { kind, name, onClick,  ...other } = props
     return (
-        <button className={ kind } {  ...other } > { name } </button>
+        <button className={ kind } onClick={onClick} {  ...other } > { name } </button>
     )
 }
 

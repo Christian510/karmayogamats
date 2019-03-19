@@ -1,0 +1,15 @@
+CREATE TABLE users (
+user_id serial PRIMARY KEY,
+first_name VARCHAR(40),
+last_name VARCHAR(40),
+password text,
+address text,
+city    VARCHAR(40),
+state   VARCHAR(2),
+zip     VARCHAR(20),
+)
+
+-- CREATE TABLE YogaSequences (
+-- seq_id serial PRIMARY KEY,
+-- seq_name VARCHAR(40),
+-- poses 

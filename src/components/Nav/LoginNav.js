@@ -39,8 +39,8 @@ class LoginNav extends Component {
                     <div className="phone">
                         <h3>(208)222-2222</h3>
                     </div>
-                    <div>
-                        <p> <Link to="/login" >Login</Link> </p>
+                    <div id="margin-rt">
+                        <Link to="/login" id="header-link">Login</Link>
                     </div>
                 </div>
                 <div className="pad-bottom">

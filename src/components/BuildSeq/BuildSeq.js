@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
 import Axios from 'axios';
-import range from 'lodash/range';
 
 // Components
 import LoginNav from '../Nav/LoginNav';
+import Tabs from '../Nav/Tabs/Tabs';
 import Input from '../Input/Input';
 import Button from '../Button/button';
 import Pose from './Pose';
@@ -30,7 +30,12 @@ class BuildSeq extends Component {
 
         }
 
+        this.handleClick = this.handleClick.bind(this);
+    }
 
+    handleClick(e) {
+        e.preventDefualt();
+        this.props.history.push('/');
     }
 
     componentDidMount() {
@@ -65,7 +70,7 @@ class BuildSeq extends Component {
                 }}>
             </div>
             <p>{ pose.english_name }</p>
-            <Button kind={"button-solid"} name={"Delete"} />
+            <Button kind={"button-solid"} name={"Delete"} onClick={this.deletePose}/>
             </div>
         )
     });
@@ -83,7 +88,6 @@ class BuildSeq extends Component {
             item.id === pose.id
         );
 
-
         newSequences.push(selectedPose);
         console.log(newSequences.length);
         
@@ -95,7 +99,9 @@ class BuildSeq extends Component {
 
     }
 
-    // deletePose() {}
+    deletePose() {
+        alert("clicked!")
+    }
 
     render() {
 
@@ -118,19 +124,7 @@ class BuildSeq extends Component {
                 <div>
                     <LoginNav />
                 </div>
-                <section className="navigation" >
-                    <div className="tabs flex-center-row" >
-                        <div className="margin">
-                            <Button kind={"button-sol-lt"} name={"Saved Sequence"} />
-                        </div>
-                        <div className="margin">
-                            <Button kind={"button-sol-lt"} name={"Build a Sequence"} />
-                        </div>
-                        <div className="margin">
-                            <Button kind={"button-sol-lt"} name={"Manage Account"} />
-                        </div>
-                    </div>
-                </section>
+                <Tabs />
                 <section className="flex-center-row">
                     <div className="sequence-bulder">
                         <ItemsCarousel
@@ -170,9 +164,10 @@ class BuildSeq extends Component {
                             name={"Name of Sequence"}
                             inputType={"text"}
                             placeholder={"Name"}
+                            style={{width: 100}}
                         />
                         <div>
-                            <Button kind={"button-solid"} name={"Save Sequence"} />
+                            <Button kind={"button-solid"} name={"Save Sequence"} onClick={this.handleClick} />
                         </div>
 
                     </div>
