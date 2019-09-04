@@ -16,8 +16,6 @@ import ItemsCarousel from 'react-items-carousel';
 import './BuildSeq.sass';
 import '../../Global/global.sass';
 
-
-
 class BuildSeq extends Component {
 
     constructor(props) {
@@ -31,6 +29,8 @@ class BuildSeq extends Component {
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.deletePose = this.deletePose.bind(this);
+        this.addPose = this.addPose.bind(this);
     }
 
     handleClick(e) {
@@ -41,7 +41,7 @@ class BuildSeq extends Component {
     componentDidMount() {
         // Gets all the poses from API  
         console.log("did mount")
-        Axios.get('/api/yoga_api/')
+        Axios.get('http://localhost:4000/api/yoga_api/')
             .then(res => {
                 console.log("===== Success! =====");
                 this.setState({
@@ -49,14 +49,14 @@ class BuildSeq extends Component {
                 })
             })
             .catch(err => {
-                console.log('===== Failure =====');
+                console.log('=====  Failure =====');
                 console.log(err);
             })
     }
-
-    createChildren = n => n.map(pose => {
-        console.log("", this.state.sequences)
+    // The "n" refers to newSequence
+    createChildren = n => n.map( (pose) => {
         pose= pose[0];
+        // console.log(pose.id);
         return (
             <div>
             <div 
@@ -70,55 +70,72 @@ class BuildSeq extends Component {
                 }}>
             </div>
             <p>{ pose.english_name }</p>
-            <Button kind={"button-solid"} name={"Delete"} onClick={this.deletePose}/>
+            <Button kind={"button-solid"} name={"Delete"} onClick={() => this.deletePose(pose)}/>
             </div>
         )
     });
 
-    changeActiveItem = (activeItemIndex) => { this.setState({ activeItemIndex }); }
+    changeActiveItem = (activeItemIndex) => { 
+        this.setState({ 
+            activeItemIndex: activeItemIndex,
+        }); 
+    }
 
 
     addPose(pose) {
-        let { sequences } = this.state;
+        // console.log(pose);
+        let { sequences, poses } = this.state;
+        // console.log("addpose clicked: ", sequences);
         let newSequences = sequences;
-
-        console.log(`grabed the ${pose.english_name}`);
-
-        const selectedPose = this.state.poses.filter(item =>
+        const selectedPose = poses.filter(item =>
             item.id === pose.id
         );
 
         newSequences.push(selectedPose);
-        console.log(newSequences.length);
         
         this.setState({
             sequences: newSequences,
             children: this.createChildren(newSequences),
 
-        }, () => { console.log("line 114",this.state.sequences) });
-
+        }, () => { console.log("line 97: children", this.state.children) }
+        );
     }
 
-    deletePose() {
-        alert("clicked!")
+    deletePose(pose) {
+        let { sequences } = this.state;
+        let updateSeq = sequences;
+        console.log("searchSeq: ", updateSeq);
+        // let updateSeq = searchSeq.filter( elm => elm.id === pose.id );
+        // console.log("updateSeq: ", updateSeq);
+        for( let i = 0; i < updateSeq.length; i++){
+            let findId = updateSeq[i][0].id
+            if ( findId === pose.id ) {
+                updateSeq.splice(i, 1);
+            }
+        }
+        console.log("Is pose.id removed? ", updateSeq);
+        this.setState({
+            // sequences: updated_sequence?,
+            children:  this.createChildren(updateSeq),
+        });
+       
     }
-
-    render() {
-
+    
+    render() {        
         const {
             activeItemIndex,
             children,
         } = this.state;
-
         // Displays all the poses in the DOM
-        const seq = this.state.poses.map((elm, i) => {
+        const seq = this.state.poses.map(( elm ) => {
             return (
-                <Pose key={i} img_url={elm.img_url}
+                <Pose 
+                    key={elm.id} 
+                    img_url={elm.img_url}
                     english_name={elm.english_name}
                     onClick={() => this.addPose(elm)} />
             )
         });
-
         return (
             <div>
                 <div>
@@ -156,7 +173,7 @@ class BuildSeq extends Component {
                     </div>
                     <div className="inputs">
                         <div>
-                            <p>{children.length} of poses added</p>
+                            <p>{children.length} poses added</p>
                         </div>
 
                         <Input
@@ -179,6 +196,7 @@ class BuildSeq extends Component {
                 </section>
             </div>
         )
+        
     }
 }
 
