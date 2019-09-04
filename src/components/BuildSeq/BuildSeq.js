@@ -54,31 +54,31 @@ class BuildSeq extends Component {
             })
     }
     // The "n" refers to newSequence
-    createChildren = n => n.map( (pose) => {
-        pose= pose[0];
+    createChildren = n => n.map((pose) => {
+        pose = pose[0];
         // console.log(pose.id);
         return (
             <div>
-            <div 
-            key={pose.id}
-            style={{ 
-                height: 200, 
-                border: "solid",  
-                backgroundImage: `url("${pose.img_url}")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center"
-                }}>
-            </div>
-            <p>{ pose.english_name }</p>
-            <Button kind={"button-solid"} name={"Delete"} onClick={() => this.deletePose(pose)}/>
+                <div
+                    key={pose.id}
+                    style={{
+                        height: 200,
+                        border: "solid",
+                        backgroundImage: `url("${pose.img_url}")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center"
+                    }}>
+                </div>
+                <p>{pose.english_name}</p>
+                <Button kind={"button-solid"} name={"Delete"} onClick={() => this.deletePose(pose)} />
             </div>
         )
     });
 
-    changeActiveItem = (activeItemIndex) => { 
-        this.setState({ 
+    changeActiveItem = (activeItemIndex) => {
+        this.setState({
             activeItemIndex: activeItemIndex,
-        }); 
+        });
     }
 
 
@@ -92,7 +92,7 @@ class BuildSeq extends Component {
         );
 
         newSequences.push(selectedPose);
-        
+
         this.setState({
             sequences: newSequences,
             children: this.createChildren(newSequences),
@@ -102,35 +102,28 @@ class BuildSeq extends Component {
     }
 
     deletePose(pose) {
-        let { sequences } = this.state;
-        let updateSeq = sequences;
-        console.log("searchSeq: ", updateSeq);
-        // let updateSeq = searchSeq.filter( elm => elm.id === pose.id );
-        // console.log("updateSeq: ", updateSeq);
-        for( let i = 0; i < updateSeq.length; i++){
-            let findId = updateSeq[i][0].id
-            if ( findId === pose.id ) {
+        let updateSeq = this.state.sequences;
+        for (let i = 0; i < updateSeq.length; i++) {
+            if (updateSeq[i][0].id === pose.id) {
                 updateSeq.splice(i, 1);
             }
         }
-        console.log("Is pose.id removed? ", updateSeq);
         this.setState({
-            // sequences: updated_sequence?,
-            children:  this.createChildren(updateSeq),
+            children: this.createChildren(updateSeq),
         });
-       
+
     }
-    
-    render() {        
+
+    render() {
         const {
             activeItemIndex,
             children,
         } = this.state;
         // Displays all the poses in the DOM
-        const seq = this.state.poses.map(( elm ) => {
+        const seq = this.state.poses.map((elm) => {
             return (
-                <Pose 
-                    key={elm.id} 
+                <Pose
+                    key={elm.id}
                     img_url={elm.img_url}
                     english_name={elm.english_name}
                     onClick={() => this.addPose(elm)} />
@@ -181,7 +174,7 @@ class BuildSeq extends Component {
                             name={"Name of Sequence"}
                             inputType={"text"}
                             placeholder={"Name"}
-                            style={{width: 100}}
+                            style={{ width: 100 }}
                         />
                         <div>
                             <Button kind={"button-solid"} name={"Save Sequence"} onClick={this.handleClick} />
@@ -196,7 +189,7 @@ class BuildSeq extends Component {
                 </section>
             </div>
         )
-        
+
     }
 }
 
