@@ -24,11 +24,14 @@ class BuildSeq extends Component {
             poses: [],
             sequences: [],
             children: [],
-            activeItemIndex: 0
-
+            activeItemIndex: 0,
+            seqenceName: '',
+            savedSeq: [],
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.deletePose = this.deletePose.bind(this);
         this.addPose = this.addPose.bind(this);
     }
@@ -36,6 +39,18 @@ class BuildSeq extends Component {
     handleClick(e) {
         e.preventDefualt();
         this.props.history.push('/');
+    }
+
+    handleChange(e) {
+        let { children } = this.state;
+        this.setState({
+            seqenceName: e.target.value,
+            savedSeq: children,
+        });
+    }
+    handleSubmit(e) {
+        Axios.post('http://localhost:4000/api/yoga_api')
+        e.preventDefualt();
     }
 
     componentDidMount() {
@@ -83,9 +98,7 @@ class BuildSeq extends Component {
 
 
     addPose(pose) {
-        // console.log(pose);
-        let { sequences, poses } = this.state;
-        // console.log("addpose clicked: ", sequences);
+        let { sequences, poses, children } = this.state;
         let newSequences = sequences;
         const selectedPose = poses.filter(item =>
             item.id === pose.id
@@ -96,13 +109,14 @@ class BuildSeq extends Component {
         this.setState({
             sequences: newSequences,
             children: this.createChildren(newSequences),
+            savedSeq: children,
 
-        }, () => { console.log("line 97: children", this.state.children) }
-        );
+        });
     }
 
     deletePose(pose) {
-        let updateSeq = this.state.sequences;
+        let { children, sequences } = this.state;
+        let updateSeq = sequences;
         for (let i = 0; i < updateSeq.length; i++) {
             if (updateSeq[i][0].id === pose.id) {
                 updateSeq.splice(i, 1);
@@ -110,6 +124,7 @@ class BuildSeq extends Component {
         }
         this.setState({
             children: this.createChildren(updateSeq),
+            savedSeq: children,
         });
 
     }
@@ -135,8 +150,10 @@ class BuildSeq extends Component {
                     <LoginNav />
                 </div>
                 <Tabs />
+                {/* ********* CAROUSEL ******** */}
                 <section className="flex-center-row">
                     <div className="sequence-bulder">
+
                         <ItemsCarousel
                             // Placeholder configurations
                             enablePlaceholder={false}
@@ -164,22 +181,29 @@ class BuildSeq extends Component {
                             {children}
                         </ItemsCarousel>
                     </div>
+                    {/* ********* END CAROUSEL ******** */}
                     <div className="inputs">
                         <div>
                             <p>{children.length} poses added</p>
                         </div>
-
-                        <Input
-                            id={"Name of Sequence"}
-                            name={"Name of Sequence"}
-                            inputType={"text"}
-                            placeholder={"Name"}
-                            style={{ width: 100 }}
-                        />
-                        <div>
-                            <Button kind={"button-solid"} name={"Save Sequence"} onClick={this.handleClick} />
-                        </div>
-
+                        <form onSubmit={this.handleSubmit}>
+                            <Input
+                                id={"Name of Sequence"}
+                                name={"Name of Sequence"}
+                                type={"text"}
+                                value={this.state.value}
+                                placeholder={"Name"}
+                                style={{ width: 100 }}
+                                onChange={this.handleChange}
+                            />
+                            <div>
+                                <Button
+                                    kind={"button-solid"}
+                                    name={"Save Sequence"}
+                                    value={"Submit"}
+                                    type={"submit"} />
+                            </div>
+                        </form>
                     </div>
                 </section>
                 <section id="wrapper">

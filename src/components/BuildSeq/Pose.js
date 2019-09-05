@@ -10,7 +10,7 @@ function Pose(props) {
             <img src={props.img_url} width="160" alt="Img" ></img>
             <div>
                 <p>{props.english_name}</p>
-                <Button key={ props.id } kind={"button-outlined"} name={"+ Sequence"} onClick={props.onClick} />
+                <Button key={ props.id } kind={"button-outlined"} name={"add pose"} onClick={props.onClick} />
             </div>
         </div>
     )
