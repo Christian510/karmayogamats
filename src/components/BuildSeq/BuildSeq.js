@@ -49,7 +49,10 @@ class BuildSeq extends Component {
         });
     }
     handleSubmit(e) {
-        Axios.post('http://localhost:4000/api/yoga_api')
+        alert(
+            `Sequence to be saved to db: Sequence ${this.state.savedSeq} 
+            Sequence Name ${ this.state.seqenceName}`
+        );
         e.preventDefualt();
     }
 
@@ -68,10 +71,9 @@ class BuildSeq extends Component {
                 console.log(err);
             })
     }
-    // The "n" refers to newSequence
+    
     createChildren = n => n.map((pose) => {
         pose = pose[0];
-        // console.log(pose.id);
         return (
             <div>
                 <div
@@ -103,14 +105,12 @@ class BuildSeq extends Component {
         const selectedPose = poses.filter(item =>
             item.id === pose.id
         );
-
         newSequences.push(selectedPose);
 
         this.setState({
             sequences: newSequences,
             children: this.createChildren(newSequences),
             savedSeq: children,
-
         });
     }
 
@@ -153,7 +153,6 @@ class BuildSeq extends Component {
                 {/* ********* CAROUSEL ******** */}
                 <section className="flex-center-row">
                     <div className="sequence-bulder">
-
                         <ItemsCarousel
                             // Placeholder configurations
                             enablePlaceholder={false}
