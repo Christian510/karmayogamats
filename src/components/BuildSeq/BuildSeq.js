@@ -53,6 +53,7 @@ class BuildSeq extends Component {
             `Sequence to be saved to db: Sequence ${this.state.savedSeq} 
             Sequence Name ${ this.state.seqenceName}`
         );
+
         e.preventDefualt();
     }
 
