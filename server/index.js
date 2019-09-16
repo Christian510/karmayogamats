@@ -9,15 +9,15 @@ const express = require( 'express' );
 // const strategy = require(`${__dirname}/strategy.js`);
 const app = express();
 const controller = require( './controller.js' );
-const cors = require( 'cors' );
-app.use( cors() );
+// const cors = require( 'cors' );
+// app.use( cors() );
 app.use( bodyParser.json() );
 // app.use( passport.initialize() );
 // app.use( passport.session() );
 // passport.use( strategy );
 massive( process.env.DATABASE_URL )
-.then( db => { app.set( db, 'db' ) })
-.catch(err => { console.log( err ) });
+.then( db => { app.set( 'db', db ) })
+.catch(err => { console.log( "error at line 20 index.js: ", err ) });
 
 
 ////////// AUTHENTICATION ///////////////
@@ -100,14 +100,16 @@ massive( process.env.DATABASE_URL )
 //     res.redirect('/');
 //   } )
 
-//////// API HTTP REQUESTS /////////
+//////// YOGA API HTTP REQUESTS /////////
 app.get('/api/yoga_api/', controller.getAllPoses );
 
 app.get( '/api/yoga_api/english/:english_name', controller.getEnglish);
 
 app.get( '/api/yoga_api/sanskrit/:sanskrit_name', controller.getSanskrit );
 
+//////// USERS FROM SQL DB ///////////
+app.get('/api/users', controller.getUsers);
+app.post('/users', controller.saveSequence);
 
-
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 app.listen( PORT, () => { console.log(`Listening on port ${PORT}.`); } );

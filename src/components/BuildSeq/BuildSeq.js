@@ -70,6 +70,11 @@ class BuildSeq extends Component {
             .catch(err => {
                 console.log('=====  Failure =====');
                 console.log(err);
+            });
+        Axios.post('http://localhost:4000/api/saved_sequences/')
+            .then(res => {
+                console.log('===== Success =====');
+                
             })
     }
     

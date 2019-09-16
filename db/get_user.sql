@@ -1,1 +1,0 @@
-Select user_id from users

@@ -10,20 +10,40 @@ import '../../Global/global.sass'
 import Footer from '../Footer/Footer';
 import Input from '../Input/Input';
 import Button from '../Button/button';
+import Axios from 'axios';
 
 class Login extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-
+            users: [],
+            username: '',
+            password: '',
+            isLoggedIn: false
         }
     }
 
-    componentWillMount(){}
+    // componentWillMount(){}
 
-    componentDidMount(){}
+    componentDidMount(){
+         // Gets all the poses from API  
+         console.log("did mount")
+         Axios.get('/api/users/')
+             .then(res => {
+                 console.log("===== Success! =====");
+                 console.log(res.headers);
+                //  this.setState({
+                //     users: res.data
+                //  })
+             })
+             .catch(err => {
+                 console.log('=====  Failure =====');
+                 console.log(err);
+             });
+    }
 
     render() {
+        // console.log(this.state.users.first_name);
         return (
             <div>
                 <div>
