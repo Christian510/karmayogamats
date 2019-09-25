@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 
 
 function Tabs() {
-    
+    // Links is the wrong user here.  I should create routes to components to be rendered.
+    // The Tabs component will go away and I can add this to App.js.
     return (
         <div>
             <section className="navigation" >
@@ -16,7 +17,7 @@ function Tabs() {
                         <Link className={"button-sol-lt"} to={'/build'}>Build a Sequence</Link>
                     </div>
                     <div className="margin">
-                        <Link className={"button-sol-lt"} to={'/'}>Manage Account</Link>
+                        <Link className={"button-sol-lt"} to={'/manage'}>Manage Account</Link>
                     </div>
                 </div>
             </section>
