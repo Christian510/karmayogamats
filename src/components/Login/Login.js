@@ -1,10 +1,8 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import LoginNav from '../Nav/LoginNav';
 import './Login.sass'
 import '../../Global/global.sass'
-import Footer from '../Footer/Footer';
 import Input from '../Input/Input';
 import Button from '../Button/button';
 import Axios from 'axios';
@@ -56,14 +54,6 @@ class Login extends Component {
         Axios.get('/api/users/find_user')
             .then(res => {
                 console.log("===== Success! =====");
-                // let users = res.data;
-                // let user = users.map( elm => {
-                //     let user = {
-                //         email: elm.email,
-                //         password: elm.password
-                //     }
-                //     return user;
-                // } );
                 this.setState({
                     users: res.data
                 });
@@ -77,12 +67,8 @@ class Login extends Component {
     }
 
     render() {
-        console.log("email: ", this.state.email, "password: ", this.state.password);
         return (
             <div>
-                <div>
-                    <LoginNav />
-                </div>
                 <div className="container flex-center-col">
                     <div className="wrapper align-content-bl">
                         <h1>Login to your account</h1>
@@ -136,9 +122,6 @@ class Login extends Component {
                             </div>
                         </form>
                     </div>
-                </div>
-                <div>
-                    <Footer />
                 </div>
             </div>
         )
