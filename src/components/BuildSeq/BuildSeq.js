@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 
 // Components
-import LoginNav from '../Nav/LoginNav';
-import Tabs from '../Nav/Tabs/Tabs';
 import Input from '../Input/Input';
 import Button from '../Button/button';
 import Pose from './Pose';
@@ -60,7 +58,7 @@ class BuildSeq extends Component {
     componentDidMount() {
         // Gets all the poses from API  
         console.log("did mount")
-        Axios.get('http://localhost:4000/api/yoga_api/')
+        Axios.get('/api/yoga_api/')
             .then(res => {
                 console.log("===== Success! =====");
                 this.setState({
@@ -71,7 +69,7 @@ class BuildSeq extends Component {
                 console.log('=====  Failure =====');
                 console.log(err);
             });
-        Axios.post('http://localhost:4000/api/saved_sequences/')
+        Axios.post('/api/saved_sequences/')
             .then(res => {
                 console.log('===== Success =====');
                 
@@ -104,7 +102,6 @@ class BuildSeq extends Component {
         });
     }
 
-
     addPose(pose) {
         let { sequences, poses, children } = this.state;
         let newSequences = sequences;
@@ -132,7 +129,6 @@ class BuildSeq extends Component {
             children: this.createChildren(updateSeq),
             savedSeq: children,
         });
-
     }
 
     render() {
@@ -152,10 +148,6 @@ class BuildSeq extends Component {
         });
         return (
             <div>
-                <div>
-                    <LoginNav />
-                </div>
-                <Tabs />
                 {/* ********* CAROUSEL ******** */}
                 <section className="flex-center-row">
                     <div className="sequence-bulder">
@@ -186,7 +178,7 @@ class BuildSeq extends Component {
                             {children}
                         </ItemsCarousel>
                     </div>
-                    {/* ********* END CAROUSEL ******** */}
+                {/* ********* END CAROUSEL ******** */}
                     <div className="inputs">
                         <div>
                             <p>{children.length} poses added</p>
@@ -196,7 +188,6 @@ class BuildSeq extends Component {
                                 id={"Name of Sequence"}
                                 name={"Name of Sequence"}
                                 type={"text"}
-                                value={this.state.value}
                                 placeholder={"Name"}
                                 style={{ width: 100 }}
                                 onChange={this.handleChange}

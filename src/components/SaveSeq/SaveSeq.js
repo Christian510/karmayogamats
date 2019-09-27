@@ -13,10 +13,7 @@ class SaveSeq extends Component {
     render(props) {
         return (
             <section>
-                <LoginNav />
-                <Tabs />
                 Saved Sequences
-                <Footer />
             </section>
         )
     }

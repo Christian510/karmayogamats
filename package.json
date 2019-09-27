@@ -1,7 +1,7 @@
 {
   "name": "karmayogamats",
   "main": "server/index.js",
-  "proxy": "http://localhost:5433",
+  "proxy": "http://localhost:4000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "eslint-utils": "^1.4.2",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "http-proxy-middleware": "^0.20.0",
     "lodash": "^4.17.15",
     "massive": "^5.11.2",
     "node-sass": "^4.11.0",

@@ -1,96 +1,39 @@
 
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import LoginNav from '../Nav/LoginNav';
+import { Route, Switch, Link } from 'react-router-dom';
+import BuildSeq from '../BuildSeq/BuildSeq';
+import SavedSeq from '../SaveSeq/SaveSeq';
+import MangAcct from '../MangAcct/MangAcct';
 import '../Home/Home.sass'
 import '../Button/button.sass';
-import Footer from '../Footer/Footer';
 
 
-class Home extends Component {
+function Home() {
 
-    render() {
+    // State for all three components go here.
         return (
             <div>
-                <div>
-                    <LoginNav />
-                </div>
-                <div className="home-container">
-                    <section className="hero flex-center-col">
-                        <h1>Build Your Yoga Class</h1>
-                        <p>Put your class together today</p>
-                        <div>
-                            <button className="button-outlined">
-                                <Link to={'/about'}  >Learn More</Link></button>
-                                <button className={"button-solid"}>
-                                    <Link to={'/register'} >Start Building</Link>
-                                </button>
-                            
+                <section className="navigation" >
+                    <div className="tabs flex-center-row" >
+                        <div className="margin">
+                            <Link className={"button-sol-lt"} id={"saved"} name={"Saved Sequence"} to={'/home/saved'}>Saved Sequence</Link>
                         </div>
-                    </section>
-                    <section className="get-started flex-center-col">
-                        <h1>Loving it is easy</h1>
-                        <div className="flex-center-row">
-                            <div className="headings">
-                                <span className="lg-dot"></span>
-                                <h2>Heading 1</h2>
-                                <p>lorem ipsom</p>
-                            </div>
-                            <div className="headings">
-                                <span className="lg-dot"></span>
-                                <h2>Heading 2</h2>
-                                <p>lorem ipsom</p>
-                            </div>
-                            <div className="headings">
-                                <span className="lg-dot"></span>
-                                <h2>Heading 3</h2>
-                                <p>lorem ipsom</p>
-                            </div>
+                        <div className="margin">
+                            <Link className={"button-sol-lt"}id={"build"} to={'/home/build'}>Build a Sequence</Link>
                         </div>
-                        <Link to={'/register'} className={"button-solid"} >Start Building</Link>
-                    </section>
-                    <section className="content flex-center-col">
-                        <h1>How It Works</h1>
-                        <div className="flex-center-row">
-                            <span className="sm-dot"></span>
-                            <div className="pad-content">
-                                <h2>Step 1</h2>
-                                <p>lorem ipsom lorem ipsom</p>
-                                <p>lorem ipsom lorem ipsom</p>
-                            </div>
+                        <div className="margin">
+                            <Link className={"button-sol-lt"} id="manage" to={'/home/manage'}>Manage Account</Link>
                         </div>
-                        <div className="flex-center-row">
-                            <span className="sm-dot"></span>
-                            <div className="pad-content">
-                                <h2>Step 2</h2>
-                                <p>lorem ipsom lorem ipsom</p>
-                                <p>lorem ipsom lorem ipsom</p>
-                            </div>
-                        </div>
-                        <div className="flex-center-row">
-                            <span className="sm-dot"></span>
-                            <div className="pad-content">
-                                <h2>Step 3</h2>
-                                <p>lorem ipsom lorem ipsom</p>
-                                <p>lorem ipsom lorem ipsom</p>
-                            </div>
-                        </div>
-                        <div id="content-bt">
-                            <button className={"button-solid"} >
-                            <Link to={'/register'}>Build Your First Class</Link>
-                            </button>
-
-                        </div>
-                    </section>
-                    <section className="carousel">
-                        Carousel
+                    </div>
                 </section>
-                </div>
-                <div>
-                    <Footer />
-                </div>
+                <section>
+                    <Switch>
+                        <Route exact path="/home/build" component={BuildSeq} />
+                        <Route path="/home/saved" component={SavedSeq} />
+                        <Route path="/home/manage" component={MangAcct} />
+                    </Switch>
+                </section>
             </div>
         )
     }
-}
 export default Home;

@@ -19,7 +19,6 @@ massive( process.env.DATABASE_URL )
 .then( db => { app.set( 'db', db ) })
 .catch(err => { console.log( "error at line 20 index.js: ", err ) });
 
-
 ////////// AUTHENTICATION ///////////////
 // passport.use('local', new localStrategy(
 //   function(username, password, next){
@@ -107,9 +106,9 @@ app.get( '/api/yoga_api/english/:english_name', controller.getEnglish);
 
 app.get( '/api/yoga_api/sanskrit/:sanskrit_name', controller.getSanskrit );
 
-//////// USERS FROM SQL DB ///////////
-app.get('/api/users', controller.getUsers);
-app.post('/users', controller.saveSequence);
+//////// USERS FROM HEROKU DB ///////////
+app.get('/api/users/find_user', controller.findUser);
+// app.post('/api/users/', controller.saveSequence);
 
-const PORT = process.env.PORT;
+const PORT = 4000;
 app.listen( PORT, () => { console.log(`Listening on port ${PORT}.`); } );

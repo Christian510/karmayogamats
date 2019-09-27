@@ -43,15 +43,16 @@ module.exports = {
             res.status( 200 ).send( yogaPose );
     },
 
-    getUsers: (req, res) => {
-        req.app.get( 'db' ).get_users().then( response => {
-            res.status( 200 ).send( response );
-            console.log( response );
-        }).catch( (err) => { console.log( err.message )});
+    findUser: (req, res) => {
+        req.app.get( 'db' ).find_user()
+        .then( users => {
+            res.status( 200 ).send( users );
+        })
+        .catch( ( err ) => { console.log( "error message: ", err.message )});
     },
 
-    saveSequence: (req, res) => {
+    // saveSequence: (req, res) => {
         
-    }
+    // }
 
 }

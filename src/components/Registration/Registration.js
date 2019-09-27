@@ -34,9 +34,6 @@ class Registration extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <LoginNav />
-                </div>
                 <div className="container flex-center-start">
                     <h1>Create your account</h1>
                     <div >
@@ -84,9 +81,6 @@ class Registration extends Component {
                     <div id="pad-bt" >
                         <button className={"button-solid"} onSubmit={this.handleSubmit}>Create Account</button>
                     </div>
-                </div>
-                <div>
-                    <Footer />
                 </div>
             </div>
         )

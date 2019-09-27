@@ -23,10 +23,10 @@ class ManagAcct extends Component {
                                 <Input
                                     className={"input-text"}
                                     id={"Email Address"}
-                                    name={"email"}
+                                    name={"First Name"}
                                     type={"text"}
-                                    placeholder={"this.props.first_name"} 
-                                    value={"this.props.email"}
+                                    placeholder={""} 
+                                    value={""}
                                     onChange={"this.handleEmail"}
                                     />
                             </div>
