@@ -101,14 +101,12 @@ massive( process.env.DATABASE_URL )
 
 //////// YOGA API HTTP REQUESTS /////////
 app.get('/api/yoga_api/', controller.getAllPoses );
-
 app.get( '/api/yoga_api/english/:english_name', controller.getEnglish);
-
 app.get( '/api/yoga_api/sanskrit/:sanskrit_name', controller.getSanskrit );
 
 //////// USERS FROM HEROKU DB ///////////
 app.get('/api/users/find_user', controller.findUser);
-// app.post('/api/users/', controller.saveSequence);
+app.get('/api/users/get_users', controller.getUsers);
 
 const PORT = 4000;
 app.listen( PORT, () => { console.log(`Listening on port ${PORT}.`); } );

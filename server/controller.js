@@ -51,6 +51,14 @@ module.exports = {
         .catch( ( err ) => { console.log( "error message: ", err.message )});
     },
 
+    getUsers: (req, res) => { 
+        req.app.get( 'db' ).get_users()
+        .then( users => { 
+            res.status( 200 ).send( users );
+        })
+        .catch( ( err ) => { console.log( "eror message: ", err.message )});
+    }
+
     // saveSequence: (req, res) => {
         
     // }

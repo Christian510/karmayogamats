@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import LoginNav from '../Nav/LoginNav';
 import '../../Global/global.sass';
 import './registration.sass';
-import Footer from '../Footer/Footer';
 import Input from '../Input/Input';
 import '../Button/button';
 

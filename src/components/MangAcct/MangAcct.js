@@ -5,14 +5,14 @@ import Button from '../Button/button';
 
 class ManagAcct extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
 
         }
 
     }
-
+// Should recive props with user info.  
     render() {
         return (
             <section>
@@ -25,44 +25,43 @@ class ManagAcct extends Component {
                                     id={"Email Address"}
                                     name={"First Name"}
                                     type={"text"}
-                                    placeholder={""} 
+                                    placeholder={"First Name"}
                                     value={""}
                                     onChange={"this.handleEmail"}
-                                    />
-                            </div>
-                            <div>
-                                <Input
-                                    className={"input-text"}
-                                    id={"Email Address"}
-                                    name={"email"}
-                                    type={"text"}
-                                    placeholder={"Email Address"}
-                                    value={this.state.email}
-                                    onChange={this.handleEmail}
                                 />
                             </div>
                             <div>
                                 <Input
                                     className={"input-text"}
-                                    id={"Password"}
-                                    name={"password"}
+                                    id={""}
+                                    name={"Last Name"}
                                     type={"text"}
-                                    placeholder={"Password"}
-                                    value={this.state.password}
-                                    onChange={this.handlePassword}
+                                    placeholder={"Last Name"}
+                                    value={"this.state.email"}
+                                    onChange={"this.handleEmail"}
                                 />
                             </div>
                             <div>
-                                <Button kind={"button-solid"}
-                                    name={"Log in"}
-                                    value={"Submit"}
-                                    type={"submit"} />
+                                <Input
+                                    className={"input-text"}
+                                    id={""}
+                                    name={"Email"}
+                                    type={"text"}
+                                    placeholder={"Email"}
+                                    value={""}
+                                    onChange={""}
+                                />
                             </div>
-                            <div id="border-top">
+                            <div>
+                                <button className={"button-outlined"} >
+                                    <Link to="/ResetPass" >Reset Password</Link>
+                                </button>
                                 <div>
-                                    <button className={"button-outlined"} >
-                                        <Link to={'/register'}>Sign up</Link>
-                                    </button>
+                                    <Button
+                                        kind={"button-solid"}
+                                        name={"Save Changes"}
+                                        value={"Submit"}
+                                        type={"submit"} />
                                 </div>
                             </div>
                         </form>

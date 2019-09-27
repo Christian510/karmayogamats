@@ -26,3 +26,5 @@ saved_sequences
 
 YOGA POSES TABLE:
 json object{}
+
+* I need to eventually Lift state in my app.

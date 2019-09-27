@@ -5,13 +5,13 @@ import './Login.sass'
 import '../../Global/global.sass'
 import Input from '../Input/Input';
 import Button from '../Button/button';
-import Axios from 'axios';
+// import Axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [],
+            users: this.props.users,
             email: '',
             password: '',
             isLoggedIn: false
@@ -32,7 +32,6 @@ class Login extends Component {
         });
     }
     handleSubmit(event) {
-        // alert('email: '+ this.state.email + ' password: ' + this.state.password);
         const email = this.state.email;
         const password = this.state.password;
         const users = this.state.users;
@@ -41,30 +40,29 @@ class Login extends Component {
                 this.setState({
                     isLoggedIn: true
                 });
-                this.props.history.push('/home/manage');
+                this.props.history.push('/home/build');
             }
         }
         event.preventDefault();
     }
-    // componentWillMount(){}
 
-    componentDidMount() {
-        // Gets all the poses from API  
-        console.log("did mount")
-        Axios.get('/api/users/find_user')
-            .then(res => {
-                console.log("===== Success! =====");
-                this.setState({
-                    users: res.data
-                });
+    // componentDidMount() {
+    //     // Gets all the poses from API  
+    //     console.log("did mount")
+    //     Axios.get('/api/users/find_user')
+    //         .then(res => {
+    //             console.log("===== Success! =====");
+    //             this.setState({
+    //                 users: res.data
+    //             });
 
-            })
-            .catch(err => {
-                console.log('=====  Failure =====');
-                console.log(err);
-            });
+    //         })
+    //         .catch(err => {
+    //             console.log('=====  Failure =====');
+    //             console.log(err);
+    //         });
 
-    }
+    // }
 
     render() {
         return (

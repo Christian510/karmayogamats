@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../components/Button/button.sass';
 import './Main.sass';
 
-class Main extends Component {
-    render() {
+function Main() {
         return (
             <div>
                 <div className="home-container">
@@ -82,6 +81,5 @@ class Main extends Component {
             </div>
         )
     }
-}
 
 export default Main;
