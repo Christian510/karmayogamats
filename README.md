@@ -28,3 +28,11 @@ YOGA POSES TABLE:
 json object{}
 
 * I need to eventually Lift state in my app.
+
+Heroku db commands
+
+Add a db to Heroku:
+* heroku pg:push mylocaldb users --app karma-yoga-mats
+
+Connect to Heroku from psql in iterm2:
+* 

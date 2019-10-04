@@ -16,20 +16,32 @@ function Home() {
                 <section className="navigation" >
                     <div className="tabs flex-center-row" >
                         <div className="margin">
-                            <Link className={"button-sol-lt"} id={"saved"} name={"Saved Sequence"} to={'/home/saved'}>Saved Sequence</Link>
+                            <Link className={"button-sol-lt"} 
+                                    id={"saved"} name={"Saved Sequence"} 
+                                    to={'/home/saved'}>Saved Sequence</Link>
                         </div>
                         <div className="margin">
-                            <Link className={"button-sol-lt"}id={"build"} to={'/home/build'}>Build a Sequence</Link>
+                            <Link className={"button-sol-lt"} 
+                                    id={"build"} 
+                                    to={'/home/build'}>Build a Sequence</Link>
                         </div>
                         <div className="margin">
-                            <Link className={"button-sol-lt"} id="manage" to={'/home/manage'}>Manage Account</Link>
+                            <Link className={"button-sol-lt"} 
+                                    id="manage" 
+                                    to={'/home/manage'}>Manage Account</Link>
                         </div>
                     </div>
                 </section>
                 <section>
+                    {/* You may want to lift state to Home.js from /build & /saved
+                    you can pass props through <BuildSeq /> */}
                     <Switch>
-                        <Route exact path="/home/build" component={BuildSeq} />
-                        <Route path="/home/saved" component={SavedSeq} />
+                        <Route exact path="/home/build" >
+                            <BuildSeq/>
+                        </Route>
+                        <Route path="/home/saved" >
+                            <SavedSeq />
+                        </Route>
                         <Route path="/home/manage" component={MangAcct} />
                     </Switch>
                 </section>

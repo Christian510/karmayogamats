@@ -1,72 +1,78 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import './components/App/App.sass';
-import { Link } from 'react-router-dom';
-import routes from './routes';
-import Logo from './assets/KYM-logo.png';
+import { Route, Switch } from 'react-router-dom';
+// import routes from './routes';
 import './components/Nav/LoginNav.sass';
 import './components/Footer/footer.sass';
+import './components/Nav/LoginNav';
+import Main from './components/Main/Main';
+import Home from './components/Home/Home';
+import Register from './components/Registration/Registration';
+import Login from './components/Login/Login';
+import Checkout from './components/Checkout/Checkout';
+import SavedSeq from './components/SaveSeq/SaveSeq';
+import ResetPass from './components/RestPW/ResetPass';
+import LoginNav from './components/Nav/LoginNav';
+import Footer from './components/Footer/Footer';
 
 // I believe I need to lift state to App.js for all user account related activities.
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       // state for login link
       toLogin: false,
       // state for Login.js, Registration, Manage Acct and Reset PW
       users: [],
+      firstName: '',
+      lastName: '',
+      gender: '',
+      email: '',
+      password: '',
+      isLoggedIn: false
+
     }
-    this.basState = this.state
   }
 
-  handleLogin() {
-    this.setState({
-      toLogin: true
-    })
-  }
 
   componentDidMount() {
     console.log("did mount")
     Axios.get('/api/users/get_users')
-        .then(res => {
-            console.log("===== Success! =====");
-            this.setState({
-                users: res.data
-            });
-        })
-        .catch(err => {
-            console.log('=====  Failure =====');
-            console.log(err);
+      .then(res => {
+        console.log("===== Success! =====");
+        this.setState({
+          users: res.data
         });
-}
-  
+      })
+      .catch(err => {
+        console.log('=====  Failure =====');
+        console.log(err);
+      });
+  }
+
   render() {
-    console.log(this.state.users[0]);
     return (
       <div>
-        <div id="header-border">
-          <div className="header">
-            <div className="phone">
-              <h3>(208)222-2222</h3>
-            </div>
-            <div id="margin-rt">
-              <Link to="/login" id="header-link">Login</Link>
-            </div>
-          </div>
-          <div className="pad-bottom">
-            <img className="logo" src={Logo} width="200" alt="KYM" ></img>
-          </div>
-        </div>
-        {routes}
-        <div className="footer">
-          <div className="footer-logo">
-            Logo
-            </div>
-          <div className="social">
-            Social Media
-            </div>
-        </div>
+        <LoginNav />
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/home" component={Home} />
+          <Route
+            path="/register"
+            render={props => (
+              <Register {...props} users={this.state.users} />
+            )} />
+          <Route
+            path="/login"
+            render={props => (
+              <Login {...props} users={this.state.users} />
+            )} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/saved" component={SavedSeq} />
+          <Route path="/ResetPass" component={ResetPass} />
+        </Switch>
+        <Footer />
       </div>
     );
   }

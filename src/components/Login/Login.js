@@ -5,64 +5,58 @@ import './Login.sass'
 import '../../Global/global.sass'
 import Input from '../Input/Input';
 import Button from '../Button/button';
-// import Axios from 'axios';
+import Axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: this.props.users,
             email: '',
             password: '',
             isLoggedIn: false
         }
-        this.handlePassword = this.handlePassword.bind(this);
-        this.handleEmail = this.handleEmail.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleEmail(event) {
-        this.setState({
-            email: event.target.value
-        });
+    handleInput(e) {
+        let value = e.target.value;
+        let name = e.target.name;
+        this.setState(prevState => {
+            return {
+                    ...prevState.newUser, [name]: value
+            }
+        }, () => console.log(this.state)
+        );
     }
-    handlePassword(event) {
-        this.setState({
-            password: event.target.value
-        });
-    }
+
     handleSubmit(event) {
         const email = this.state.email;
         const password = this.state.password;
-        const users = this.state.users;
+        const users = this.props.users;
         for (let i = 0; i < users.length; i++) {
             if (email === users[i].email && password === users[i].password) {
                 this.setState({
                     isLoggedIn: true
                 });
                 this.props.history.push('/home/build');
+            } else {
+                this.invalidLogin();
             }
         }
         event.preventDefault();
     }
 
-    // componentDidMount() {
-    //     // Gets all the poses from API  
-    //     console.log("did mount")
-    //     Axios.get('/api/users/find_user')
-    //         .then(res => {
-    //             console.log("===== Success! =====");
-    //             this.setState({
-    //                 users: res.data
-    //             });
-
-    //         })
-    //         .catch(err => {
-    //             console.log('=====  Failure =====');
-    //             console.log(err);
-    //         });
-
-    // }
+    invalidLogin(e) {
+        e.preventDefault();
+        alert("Wrong email and / or password!");
+        this.setState({ 
+          newUser: {
+            email: '',
+            password: '',
+          }
+        });
+    }
 
     render() {
         return (
@@ -73,24 +67,24 @@ class Login extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div>
                                 <Input
+                                    title={"Email"}
                                     className={"input-text"}
-                                    id={"Email Address"}
                                     name={"email"}
                                     type={"text"}
-                                    placeholder={"Email Address"}
+                                    placeholder={"Email Address" || this.state.email}
                                     value={this.state.email}
-                                    onChange={this.handleEmail}
+                                    handleChange={this.handleInput}
                                 />
                             </div>
                             <div>
                                 <Input
+                                    title={"Password"}
                                     className={"input-text"}
-                                    id={"Password"}
                                     name={"password"}
-                                    type={"text"}
+                                    type={"password"}
                                     placeholder={"Password"}
                                     value={this.state.password}
-                                    onChange={this.handlePassword}
+                                    handleChange={this.handleInput}
                                 />
                             </div>
                             <div>
@@ -99,7 +93,6 @@ class Login extends Component {
                             <div id="flip">
                                 <Input
                                     className={"input-bt"}
-                                    id={"checkbox"}
                                     name={"keep me loged in for 30 days"}
                                     type={"checkbox"}
                                 />

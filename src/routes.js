@@ -10,19 +10,23 @@ import Register from './components/Registration/Registration';
 import Checkout from './components/Checkout/Checkout';
 import BuildSeq from './components/BuildSeq/BuildSeq';
 import SavedSeq from './components/SaveSeq/SaveSeq';
-import MangAcct from './components/MangAcct/MangAcct';
-import ResetPass from './components/Nav/ResetPass';
+// import MangAcct from './components/MangAcct/MangAcct';
+import ResetPass from './components/RestPW/ResetPass';
 
 
 export default ( 
     <Switch>
         <Route exact path="/" component={ Main } />
         <Route path="/home" component={ Home } />
-        {/* <Route path="/home/build" component={ BuildSeq } />
+        <Route path="/home/build" component={ BuildSeq } />
         <Route path="/home/manage" component={ MangAcct } />
-        <Route path="/home/saved" component={ Home } /> */}
+        <Route path="/home/saved" component={ Home } />
         <Route path="/register" component={ Register } />
-        <Route path="/login" component={ Login } />
+        <Route 
+            path="/login" 
+            render={ routeProps => (
+                <Login { ...routeProps } />
+            )} />
         <Route path="/checkout" component={ Checkout } />
         <Route path="/saved" component={ SavedSeq } />
         <Route path="/ResetPass" component={ ResetPass } />

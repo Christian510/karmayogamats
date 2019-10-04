@@ -69,11 +69,11 @@ class BuildSeq extends Component {
                 console.log('=====  Failure =====');
                 console.log(err);
             });
-        Axios.post('/api/saved_sequences/')
-            .then(res => {
-                console.log('===== Success =====');
+        // Axios.post('/api/saved_sequences/')
+        //     .then(res => {
+        //         console.log('===== Success =====');
                 
-            })
+        //     })
     }
     
     createChildren = n => n.map((pose) => {

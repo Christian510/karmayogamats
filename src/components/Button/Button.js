@@ -3,10 +3,12 @@ import './button.sass';
 
 
 function Button(props) {
-    
-    const { kind, name, onClick,  ...other } = props
+
+    const { kind, name, onClick, ...other } = props
     return (
-        <button className={ kind } onClick={onClick} {  ...other } > { name } </button>
+        <button
+            className={kind}
+            onClick={onClick} {...other} > {name} </button>
     )
 }
 
