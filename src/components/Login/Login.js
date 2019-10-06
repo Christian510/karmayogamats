@@ -5,7 +5,6 @@ import './Login.sass'
 import '../../Global/global.sass'
 import Input from '../Input/Input';
 import Button from '../Button/button';
-import Axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -24,7 +23,7 @@ class Login extends Component {
         let name = e.target.name;
         this.setState(prevState => {
             return {
-                    ...prevState.newUser, [name]: value
+                    ...prevState, [name]: value
             }
         }, () => console.log(this.state)
         );
