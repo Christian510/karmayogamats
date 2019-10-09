@@ -23,7 +23,7 @@ class Login extends Component {
         let name = e.target.name;
         this.setState(prevState => {
             return {
-                    ...prevState, [name]: value
+                ...prevState, [name]: value
             }
         }, () => console.log(this.state)
         );
@@ -33,27 +33,31 @@ class Login extends Component {
         const email = this.state.email;
         const password = this.state.password;
         const users = this.props.users;
-        for (let i = 0; i < users.length; i++) {
-            if (email === users[i].email && password === users[i].password) {
-                this.setState({
-                    isLoggedIn: true
-                });
-                this.props.history.push('/home/build');
-            } else {
-                this.invalidLogin();
+        const validateUser = users.reduce((validUser, user) => {
+            if (user.email === email && user.password === password) {
+                validUser = validUser || true;
             }
+            return validUser;
+        }, false);
+        if (validateUser === true) {
+            this.setState({
+                isLoggedIn: true
+            });
+            this.props.history.push('/home/build');
+        }
+        else if (validateUser === false) {
+            alert("Wrong email and / or password!");
         }
         event.preventDefault();
     }
 
     invalidLogin(e) {
-        e.preventDefault();
         alert("Wrong email and / or password!");
-        this.setState({ 
-          newUser: {
-            email: '',
-            password: '',
-          }
+        this.setState({
+            newUser: {
+                email: '',
+                password: '',
+            }
         });
     }
 
@@ -70,7 +74,7 @@ class Login extends Component {
                                     className={"input-text"}
                                     name={"email"}
                                     type={"text"}
-                                    placeholder={"Email Address" || this.state.email}
+                                    placeholder={"Email Address"}
                                     value={this.state.email}
                                     handleChange={this.handleInput}
                                 />

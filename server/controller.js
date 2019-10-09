@@ -60,7 +60,7 @@ module.exports = {
     },
 
     addNewUser: ( req, res ) => { 
-        const { firstName, last_name, email, password } = req.body;
+        const { first_name, last_name, email, password } = req.body;
         console.log(req.body);
         req.app.get( 'db' ).add_new_user( [ first_name, last_name, email, password ] )
         .then( newUser => {

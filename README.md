@@ -35,4 +35,4 @@ Add a db to Heroku:
 * heroku pg:push mylocaldb users --app karma-yoga-mats
 
 Connect to Heroku from psql in iterm2:
-* 
+* heroku psql -a karma-yoga-mats

@@ -5,7 +5,6 @@ import Input from '../Input/Input';
 // import Select from '../FormComponents/Select/Select';
 import Button from '../Button/button';
 import Axios from 'axios';
-// import '../Button/button';
 
 class Registration extends Component {
     constructor(props) {
@@ -34,32 +33,17 @@ class Registration extends Component {
                     ...prevState.newUser, [name]: value
                 }
             }
-        } //, () => console.log(this.state.newUser)
+        }//, () => console.log(this.state.newUser)
         )
     }
 
-    handleFormSubmit(e) {
-        e.preventDefault();
-        const users = this.props.users
-        const { first_name, last_name, email, password, confirm } = this.state.newUser;
+    addNewUser(fn, ln, em, pw) {
         let body = {
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            password: password
+            first_name: fn,
+            last_name: ln,
+            email: em,
+            password: pw
         }
-        // Make sure form is completely filled out.
-        if (first_name && last_name && email && password && confirm && password === confirm) {
-            for (let i = 0; i < users.length; i++) {
-                // Check if newUser is not in db.
-                if (first_name === users[i].first_name && last_name === users[i].last_name && email === users[i].email && password === users[i].password) {
-                    alert("It appears you already have an account! Try logging in or request a new password");
-                } else if (password !== confirm) {
-                    alert("Password does not match confirmation!");
-                }
-            }
-        }
-        // If not in db then add them to the db.
         Axios.post('/api/users/add_new_user', body)
             .then(res => {
                 console.log("===== Successfully added new users! =====");
@@ -68,24 +52,50 @@ class Registration extends Component {
                 console.log("=====  Oops! Something Went wrong =====");
                 console.log(err);
             });
-        // this.handleClearForm();
-        this.props.history.push('/home/build');
+            this.props.history.push('/home/build');
     }
 
-    handleClearForm(e) {
+    handleFormSubmit(e) {
         e.preventDefault();
+        const users = this.props.users
+        const { first_name, last_name, email, password, confirm } = this.state.newUser;
+
+        // Make sure form is completely filled out.
+        if (!first_name || !last_name || !email || !password || !confirm) {
+            alert("All form fields are required.");
+            this.handleClearForm();
+        }
+        // Validate password.
+        else if (password !== confirm) {
+            alert("Password does not match confirmation!");
+            this.handleClearForm();
+        }
+        else if (users) {
+            for (let i = 0; i < users.length; i++) {
+                // Check if newUser is not in db.
+                if (email !== users[i].email && password !== users[i].password) {
+                    i++;
+                }
+                 else if (email === users[i].email) {
+                   return alert("The email you entered is already assciated with an account.");
+                }
+                else if (password === users[i].password) {
+                   return alert("The password you entered is already in use.");
+                }
+            }
+        }
+            // If not in db then add them to the db.
+            return this.addNewUser(first_name, last_name, email, password);
+    }
+
+    handleClearForm() {
         this.setState({
             newUser: {
-                first_name: '',
-                last_name: '',
-                gender: '',
-                email: '',
                 password: '',
                 confirm: '',
-            },
+            }
         })
     }
-
     render() {
         return (
             <div>
