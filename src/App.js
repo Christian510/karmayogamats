@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import './components/App/App.sass';
 import { Route, Switch } from 'react-router-dom';
-// import routes from './routes';
+// Glyph Icons
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+// import { } from '@fortawesome/free-solid-svg-icons'
 import './components/Nav/LoginNav.sass';
 import './components/Footer/footer.sass';
 import './components/Nav/LoginNav';
@@ -15,7 +18,7 @@ import SavedSeq from './components/SaveSeq/SaveSeq';
 import ResetPass from './components/RestPW/ResetPass';
 import LoginNav from './components/Nav/LoginNav';
 import Footer from './components/Footer/Footer';
-
+library.add(fab);
 // I believe I need to lift state to App.js for all user account related activities.
 class App extends Component {
   constructor(props) {

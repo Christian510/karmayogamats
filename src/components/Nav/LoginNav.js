@@ -28,8 +28,7 @@ class LoginNav extends Component {
     }
 
     render() {
-        if(this.state.toLogin === true) {
-            
+        if(this.state.toLogin === true) {     
             return <Redirect to='/login' />
         }
         
