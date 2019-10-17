@@ -6,14 +6,35 @@ import '../../Global/global.sass';
 import './footer.sass';
 
 function Footer() {
-
     return (
         <div className="footer">
-            <div className="footer-logo">
+            <div className="footer-logo flex-center-col">
                 <img className="logo" src={Logo} width="200" alt="KYM" ></img>
+                    <div className="fex-center-col space">
+                        <p className="text"> Some text goes here</p>
+                        <p className="text"> Some text goes here</p>
+                    </div>
+                    <div className="flex-center-col space">
+                        <p className="text">(208)345-1234</p>
+                        <p className="text">info@karmayogamats.com</p>
+                    </div>
             </div>
-            <div className="social">
-                <FontAwesomeIcon icon="facebook"/>
+            <div className="social flex-center-row-f">
+                <span className="dot flex-center-row">
+                    <FontAwesomeIcon icon={['fab', 'facebook-f']} size="2x" />
+                </span>
+                <span className="dot flex-center-row" >
+                    <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+                </span>
+                <span className="dot flex-center-row" >
+                    <FontAwesomeIcon icon={['fab', 'pinterest-p']} size="2x" />
+                </span>
+                <span className="dot flex-center-row" >
+                    <FontAwesomeIcon icon={['fab', 'linkedin-in']} size="2x" />
+                </span>
+                <span className="dot flex-center-row" >
+                    <FontAwesomeIcon icon={['fab', 'spotify']} size="2x" />
+                </span>
             </div>
         </div>
     )

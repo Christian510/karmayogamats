@@ -80,9 +80,9 @@ function Main() {
 
                     </div>
                 </section>
-                <section className="carousel">
+                {/* <section className="carousel">
                     Carousel
-                    </section>
+                    </section> */}
             </div>
         </div>
     )
