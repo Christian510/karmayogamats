@@ -7,7 +7,6 @@ import './Main.sass';
 import PhotoOne from '../../assets/yoga_photos/Yoga1.jpg';
 import YogaClass from '../../assets/yoga_photos/Yoga15.jpg';
 import PhotoFive from '../../assets/yoga_photos/Yoga5.jpg';
-import PhotoEight from '../../assets/yoga_photos/Yoga8.jpg';
 
 function Main() {
     return (
@@ -45,7 +44,9 @@ function Main() {
                             <p>Create and save up to 10 sequences.</p>
                         </div>
                     </div>
-                    <Link to={'/register'} className={"button-solid"} >Start Building</Link>
+                    <button className={"button-solid"}>
+                        <Link to={'/register'} >Start Building</Link>
+                    </button>
                 </section>
                 <section className="content flex-center-col">
                     <h1>How It Works</h1>
@@ -77,12 +78,8 @@ function Main() {
                         <button className={"button-solid"} >
                             <Link to={'/register'}>Build Your First Class</Link>
                         </button>
-
                     </div>
                 </section>
-                {/* <section className="carousel">
-                    Carousel
-                    </section> */}
             </div>
         </div>
     )

@@ -1,15 +1,17 @@
 
 import React from 'react';
-import Logo from '../../assets/KYM-logo.png';
+// import Logo from '../../assets/KYM-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../Global/global.sass';
 import './footer.sass';
+import Logo from '../FormComponents/Logo/Logo';
 
 function Footer() {
     return (
         <div className="footer">
             <div className="footer-logo flex-center-col">
-                <img className="logo" src={Logo} width="200" alt="KYM" ></img>
+                <Logo />
+                {/* <img className="logo" src={Logo} width="200" alt="KYM" ></img> */}
                     <div className="fex-center-col space">
                         <p className="text"> Some text goes here</p>
                         <p className="text"> Some text goes here</p>
