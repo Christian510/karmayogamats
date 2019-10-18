@@ -4,7 +4,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/KYM-logo.png';
+import Logo from '../FormComponents/Logo/Logo';
+// import Logo from '../../assets/KYM-logo.png';
 import './LoginNav.sass';
 import '../Button/button.sass';
 
@@ -12,26 +13,26 @@ import '../Button/button.sass';
 
 
 class LoginNav extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
             toLogin: false
         }
         this.basState = this.state
     }
-    
+
 
     handleLogin() {
-         this.setState({
+        this.setState({
             toLogin: true
         })
     }
 
     render() {
-        if(this.state.toLogin === true) {     
+        if (this.state.toLogin === true) {
             return <Redirect to='/login' />
         }
-        
+
         return (
             <div id="header-border">
                 <div className="header">
@@ -42,8 +43,10 @@ class LoginNav extends Component {
                         <Link to="/login" id="header-link">Login</Link>
                     </div>
                 </div>
-                <div className="pad-bottom">
-                    <img className="logo" src={Logo} width="200" alt="KYM" ></img>
+                <div>
+                    <div className="center-logo">
+                        <Logo />
+                    </div>
                 </div>
             </div>
         );

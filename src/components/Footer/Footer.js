@@ -11,7 +11,6 @@ function Footer() {
         <div className="footer">
             <div className="footer-logo flex-center-col">
                 <Logo />
-                {/* <img className="logo" src={Logo} width="200" alt="KYM" ></img> */}
                     <div className="fex-center-col space">
                         <p className="text"> Some text goes here</p>
                         <p className="text"> Some text goes here</p>
