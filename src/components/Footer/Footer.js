@@ -10,7 +10,7 @@ function Footer() {
     return (
         <div className="footer">
             <div className="footer-logo flex-center-col">
-                <Logo />
+                <Logo width="220" />
                     <div className="fex-center-col space">
                         <p className="text"> Some text goes here</p>
                         <p className="text"> Some text goes here</p>

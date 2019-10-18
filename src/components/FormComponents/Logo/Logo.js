@@ -5,10 +5,10 @@ import kymLogo from '../../../assets/KYM-logo.png';
 
 
 
-const Logo = () => {
+const Logo = (props) => {
     return (
         <Link to={'/'} >
-            <img className="logo" src={kymLogo} width="200" alt="KYM" ></img>
+            <img className="" src={kymLogo} width={props.width} alt="KYM" ></img>
         </Link>
     )
 }

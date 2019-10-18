@@ -45,7 +45,7 @@ class LoginNav extends Component {
                 </div>
                 <div>
                     <div className="center-logo">
-                        <Logo />
+                        <Logo width="150" />
                     </div>
                 </div>
             </div>
