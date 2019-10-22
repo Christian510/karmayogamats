@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Input/Input';
-import Button from '../Button/button';
+import Button from '../Button/Button';
 
 class ManagAcct extends Component {
 
@@ -27,8 +27,7 @@ class ManagAcct extends Component {
                                     type={"text"}
                                     placeholder={"First Name"}
                                     value={""}
-                                    onChange={"this.handleEmail"}
-                                />
+                                    onChange={"this.handleEmail"} />
                             </div>
                             <div>
                                 <Input
@@ -38,8 +37,7 @@ class ManagAcct extends Component {
                                     type={"text"}
                                     placeholder={"Last Name"}
                                     value={"this.state.email"}
-                                    onChange={"this.handleEmail"}
-                                />
+                                    onChange={"this.handleEmail"} />
                             </div>
                             <div>
                                 <Input
@@ -49,8 +47,7 @@ class ManagAcct extends Component {
                                     type={"text"}
                                     placeholder={"Email"}
                                     value={""}
-                                    onChange={""}
-                                />
+                                    onChange={""} />
                             </div>
                             <div>
                                 <button className={"button-outlined"} >

@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 // Components
 import Input from '../Input/Input';
-import Button from '../Button/button';
+import Button from '../Button/Button';
 import Pose from './Pose';
 import ItemsCarousel from 'react-items-carousel';
 // import CarouselImage from '../Carousel/CarouselImage/CarouselImage';
@@ -173,8 +173,7 @@ class BuildSeq extends Component {
                             chevronWidth={24}
                             rightChevron={'>'}
                             leftChevron={'<'}
-                            outsideChevron={false}
-                        >
+                            outsideChevron={false} >
                             {children}
                         </ItemsCarousel>
                     </div>
@@ -190,8 +189,7 @@ class BuildSeq extends Component {
                                 type={"text"}
                                 placeholder={"Name"}
                                 style={{ width: 100 }}
-                                onChange={this.handleChange}
-                            />
+                                onChange={this.handleChange} />
                             <div>
                                 <Button
                                     kind={"button-solid"}

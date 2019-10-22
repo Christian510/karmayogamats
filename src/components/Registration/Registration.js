@@ -3,7 +3,7 @@ import '../../Global/global.sass';
 import './registration.sass';
 import Input from '../Input/Input';
 // import Select from '../FormComponents/Select/Select';
-import Button from '../Button/button';
+import Button from '../Button/Button';
 import Axios from 'axios';
 
 class Registration extends Component {
@@ -110,9 +110,7 @@ class Registration extends Component {
                                 type={"text"}
                                 value={this.state.newUser.first_name}
                                 handleChange={this.handleInput}
-                                placeholder={"First Name"}
-
-                            />
+                                placeholder={"First Name"} />
                         </div>
                         <div>
                             <Input
@@ -122,8 +120,7 @@ class Registration extends Component {
                                 type={"text"}
                                 value={this.state.newUser.last_name}
                                 handleChange={this.handleInput}
-                                placeholder={"Last Name"}
-                            />
+                                placeholder={"Last Name"} />
                         </div>
                         <div>
                             <Input
@@ -133,8 +130,7 @@ class Registration extends Component {
                                 type={"email"}
                                 value={this.state.newUser.email}
                                 handleChange={this.handleInput}
-                                placeholder={"Email"}
-                            />
+                                placeholder={"Email"} />
                         </div>
                         <div>
                             <Input
@@ -144,8 +140,7 @@ class Registration extends Component {
                                 type={"password"}
                                 value={this.state.newUser.password}
                                 handleChange={this.handleInput}
-                                placeholder={"Password"}
-                            />
+                                placeholder={"Password"} />
                         </div>
                         <div>
                             <Input
@@ -155,14 +150,12 @@ class Registration extends Component {
                                 type={"password"}
                                 value={this.state.newUser.confirm}
                                 handleChange={this.handleInput}
-                                placeholder={"Password"}
-                            />
+                                placeholder={"Password"} />
                         </div>
                         <div id={"pad-bt"}>
                             <Button
                                 kind={"button-solid"}
-                                name={"Create Accout"}
-                            />
+                                name={"Create Accout"} />
                         </div>
                     </form>
                 </div>

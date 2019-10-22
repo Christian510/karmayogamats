@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../Global/global.sass';
 import './resetPass.sass';
 import Input from '../Input/Input';
-import Button from '../Button/button';
+import Button from '../Button/Button';
 
 
 class ResetPass extends Component {
@@ -23,8 +23,7 @@ class ResetPass extends Component {
                                 id={"New Password"}
                                 name={"New Password"}
                                 type={"password"}
-                                placeholder={"Password"}
-                            />
+                                placeholder={"Password"} />
                         </div>
                         <div>
                             <Input
@@ -32,8 +31,7 @@ class ResetPass extends Component {
                                 id={"Confirm Password"}
                                 name={"Password"}
                                 type={"password"}
-                                placeholder={"Password"}
-                            />
+                                placeholder={"Password"} />
                         </div>
                         <div>
                             <Button 

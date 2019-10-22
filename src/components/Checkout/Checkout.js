@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Components
-import Button from '../Button/button';
+import Button from '../Button/Button';
 import Input from '../Input/Input.sass';
 
 // Styles

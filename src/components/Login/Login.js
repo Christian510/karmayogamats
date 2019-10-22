@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Login.sass'
 import '../../Global/global.sass'
 import Input from '../Input/Input';
-import Button from '../Button/button';
+import Button from '../Button/Button';
 
 class Login extends Component {
     constructor(props) {
@@ -76,8 +76,7 @@ class Login extends Component {
                                     type={"text"}
                                     placeholder={"Email Address"}
                                     value={this.state.email}
-                                    handleChange={this.handleInput}
-                                />
+                                    handleChange={this.handleInput} />
                             </div>
                             <div>
                                 <Input
@@ -87,8 +86,7 @@ class Login extends Component {
                                     type={"password"}
                                     placeholder={"Password"}
                                     value={this.state.password}
-                                    handleChange={this.handleInput}
-                                />
+                                    handleChange={this.handleInput} />
                             </div>
                             <div>
                                 <Link to="/ResetPass" >Reset Password</Link>
@@ -97,8 +95,7 @@ class Login extends Component {
                                 <Input
                                     className={"input-bt"}
                                     name={"keep me loged in for 30 days"}
-                                    type={"checkbox"}
-                                />
+                                    type={"checkbox"} />
                             </div>
                             <div>
                                 <Button kind={"button-solid"}
