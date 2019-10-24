@@ -109,5 +109,5 @@ app.get('/api/users/find_user', controller.findUser);
 app.get('/api/users/get_users', controller.getUsers);
 app.post('/api/users/add_new_user', controller.addNewUser);
 
-const PORT = 4000;
+const PORT = process.env.PORT;
 app.listen( PORT, () => { console.log(`Listening on port ${PORT}.`); } );
