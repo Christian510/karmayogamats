@@ -22,7 +22,7 @@
     "http-proxy-middleware": "^0.20.0",
     "lodash": "^4.17.15",
     "massive": "^5.11.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "passport": "^0.4.0",
     "passport-auth0": "^1.1.0",
     "passport-local": "^1.0.0",
