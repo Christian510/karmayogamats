@@ -42,8 +42,9 @@ class App extends Component {
 
   componentDidMount() {
     console.log("did mount")
-    Axios.get('/api/users/get_users')
+    Axios.get(`${process.env.SERVER_URL}/users/get_users`)
       .then(res => {
+        console.log(res);
         console.log("===== Success! =====");
         this.setState({
           users: res.data

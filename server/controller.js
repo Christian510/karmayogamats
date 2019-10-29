@@ -51,7 +51,8 @@ module.exports = {
         .catch( ( err ) => { console.log( "error message: ", err.message ) } );
     },
 
-    getUsers: ( req, res ) => { 
+    getUsers: ( req, res ) => {
+        console.log(req.data);
         req.app.get( 'db' ).get_users()
         .then( users => { 
             res.status( 200 ).send( users );

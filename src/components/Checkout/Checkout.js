@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 // Components
-import Button from '../Button/Button';
-import Input from '../Input/Input.sass';
+// import Button from '../Button/Button';
+// import Input from '../Input/Input.sass';
 
 // Styles
 import '../../Global/global.sass';

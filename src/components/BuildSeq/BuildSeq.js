@@ -58,7 +58,7 @@ class BuildSeq extends Component {
     componentDidMount() {
         // Gets all the poses from API  
         console.log("did mount")
-        Axios.get('/api/yoga_api/')
+        Axios.get(`${process.env.SERVER_URL}/api/yoga_api/`)
             .then(res => {
                 console.log("===== Success! =====");
                 this.setState({

@@ -33,6 +33,7 @@ class Login extends Component {
         const email = this.state.email;
         const password = this.state.password;
         const users = this.props.users;
+        
         const validateUser = users.reduce((validUser, user) => {
             if (user.email === email && user.password === password) {
                 validUser = validUser || true;

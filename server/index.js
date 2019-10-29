@@ -9,8 +9,8 @@ const express = require( 'express' );
 // const strategy = require(`${__dirname}/strategy.js`);
 const app = express();
 const controller = require( './controller.js' );
-// const cors = require( 'cors' );
-// app.use( cors() );
+const cors = require( 'cors' );
+app.use( cors() );
 app.use( bodyParser.json() );
 // app.use( passport.initialize() );
 // app.use( passport.session() );
@@ -105,9 +105,13 @@ app.get( '/api/yoga_api/english/:english_name', controller.getEnglish);
 app.get( '/api/yoga_api/sanskrit/:sanskrit_name', controller.getSanskrit );
 
 //////// USERS FROM HEROKU DB ///////////
-app.get('/api/users/find_user', controller.findUser);
-app.get('/api/users/get_users', controller.getUsers);
-app.post('/api/users/add_new_user', controller.addNewUser);
+app.get('/users/find_user', controller.findUser);
+app.get('/users/get_users', controller.getUsers);
+app.post('/users/add_new_user', controller.addNewUser);
 
-const PORT = process.env.PORT;
-app.listen( PORT, () => { console.log(`Listening on port ${PORT}.`); } );
+const port = 5432;
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 8000;
+// }
+app.listen( port, () => { console.log(`Listening on port ${port}.`); } );
