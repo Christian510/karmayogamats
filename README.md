@@ -36,3 +36,9 @@ Add a db to Heroku:
 
 Connect to Heroku from psql in iterm2:
 * heroku psql -a karma-yoga-mats
+
+Login to Heroku
+* heroku login
+
+Deploy to heroku
+* git push heroku master
