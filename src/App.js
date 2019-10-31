@@ -39,10 +39,9 @@ class App extends Component {
     }
   }
 
-
   componentDidMount() {
     console.log("did mount")
-    Axios.get(`${process.env.SERVER_URL}/users/get_users`)
+    Axios.get(`http://localhost:5432/users/get_users`)
       .then(res => {
         console.log(res);
         console.log("===== Success! =====");

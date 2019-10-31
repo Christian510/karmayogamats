@@ -7,8 +7,6 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Pose from './Pose';
 import ItemsCarousel from 'react-items-carousel';
-// import CarouselImage from '../Carousel/CarouselImage/CarouselImage';
-// import MyAcctNav from '../components/MyAcctNav.js'
 
 // Styles
 import './BuildSeq.sass';
@@ -58,7 +56,7 @@ class BuildSeq extends Component {
     componentDidMount() {
         // Gets all the poses from API  
         console.log("did mount")
-        Axios.get(`${process.env.SERVER_URL}/api/yoga_api/`)
+        Axios.get(`http://localhost:5432/api/yoga_api/`)
             .then(res => {
                 console.log("===== Success! =====");
                 this.setState({
